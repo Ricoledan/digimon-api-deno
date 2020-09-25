@@ -2,13 +2,13 @@
 
 ## Run
 
-``` CLI
-deno run --allow-net server.ts
+```CLI
+denon run --allow-read --allow-net server.ts
 ```
 
-## Routes (WIP)
+## Routes
 
-``` REST
+```REST
 GET      /api/v1/digimon
 GET      /api/v1/digimon/:id
 POST     /api/v1/digimon
