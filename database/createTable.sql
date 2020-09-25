@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS digimon (
     level VARCHAR(3) NOT NULL,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(255),
+    image_url VARCHAR(255),
     added TIMESTAMP NOT NULL,
     updated TIMESTAMP,
     deleted TIMESTAMP
