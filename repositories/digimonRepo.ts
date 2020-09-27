@@ -17,10 +17,23 @@ class DigimonRepo {
   selectAll() {
     return client.query('SELECT * FROM digimon ORDER BY id')
   }
-  selectById(id) {
-    return client.query(`SELECT * FROM digimon WHERE id == $1`, id)
+  selectByName(name) {
+    return client.query(`SELECT * FROM digimon WHERE name == $1`, name)
   }
-  update(id, digimon) {
-    return client.query(``)
+  update(name, digimon) {
+    const getDigimon = this.selectByName(name)
+    const updateQuery = client.query(
+      `UPDATE digimon SET type = $1, level = $2, name = $3, description = $4, image_url = $5 WHERE name = $3`
+    )
+    return client.query(
+      updateQuery,
+      digimon.type !== undefined ? digimon.type : getDigimon.type,
+      digimon.level !== undefined ? digimon.level : getDigimon.level,
+      digimon.name !== undefined ? digimon.name : getDigimon.name,
+      digimon.description !== undefined
+        ? digimon.description
+        : getDigimon.description,
+      digimon.image_url !== undefined ? digimon.image_url : getDigimon.image_url
+    )
   }
 }

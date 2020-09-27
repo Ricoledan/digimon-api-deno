@@ -16,9 +16,9 @@ router
     };
   })
   .get("/api/v1/digimon", getAllDigimon)
-  .get("/api/v1/digimon/:id", getDigimon)
+  .get("/api/v1/digimon/:name", getDigimon)
   .post("/api/v1/digimon", addDigimon)
-  .put("/api/v1/digimon/:id", updateDigimon)
-  .delete("/api/v1/digimon/:id", deleteDigimon);
+  .put("/api/v1/digimon/:name", updateDigimon)
+  .delete("/api/v1/digimon/:name", deleteDigimon);
 
 export default router;

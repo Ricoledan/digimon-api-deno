@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS digimon (
     name VARCHAR(50) NOT NULL,
     description VARCHAR(255),
     image_url VARCHAR(255),
-    added TIMESTAMP NOT NULL,
-    updated TIMESTAMP,
-    deleted TIMESTAMP
+    added VARCHAR(255) NOT NULL,
+    updated VARCHAR(255),
+    deleted VARCHAR(255)
 )
