@@ -3,7 +3,7 @@
 ## Run
 
 ```CLI
-denon run --allow-read --allow-net server.ts
+deno run -A drakefile.ts run
 ```
 
 ## Routes
