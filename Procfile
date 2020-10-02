@@ -1,1 +1,1 @@
-web: deno run -A drakefile.ts
+web: deno run -A drakefile.ts run
