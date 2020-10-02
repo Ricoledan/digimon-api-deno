@@ -1,12 +1,12 @@
-import { config } from "../deps.ts";
-import { Client } from "https://deno.land/x/postgres@v0.3.11/mod.ts";
+import { config } from '../deps.ts'
+import { Client } from 'https://deno.land/x/postgres@v0.3.11/mod.ts'
 
-const env = config();
+const env = config()
 
 class Database {
-  client: any;
+  client: any
   constructor() {
-    this.connect();
+    this.connect()
   }
 
   async connect() {
@@ -16,10 +16,10 @@ class Database {
       host: env.DATABASE_HOST,
       password: env.DATABASE_PASSWORD,
       port: env.DATABASE_PORT,
-    });
+    })
 
-    await this.client.connect();
+    await this.client.connect()
   }
 }
 
-export default new Database().client;
+export default new Database().client
