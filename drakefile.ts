@@ -5,4 +5,9 @@ task('run', [], async function () {
   await sh('denon run --allow-net --allow-env --allow-read server.ts')
 })
 
+desc('Lock Deno Dependencies')
+task('lock', [], async function () {
+  await sh('deno cache --lock=lock.json --lock-write deps.ts')
+})
+
 run()
