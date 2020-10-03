@@ -1,13 +1,18 @@
-import { desc, run, task, sh } from 'https://deno.land/x/drake@v1.2.6/mod.ts'
+import { desc, run, task, sh } from './src/deps.ts'
 
 desc('Run Deno Server')
 task('run', [], async function () {
-  await sh('denon run --allow-net --allow-env --allow-read server.ts')
+  await sh('denon run --allow-net --allow-env --allow-read src/server.ts')
+})
+
+desc('Test Deno Project')
+task('test', [], async function () {
+  await sh('')
 })
 
 desc('Lock Deno Dependencies')
 task('lock', [], async function () {
-  await sh('deno cache --lock=lock.json --lock-write deps.ts')
+  await sh('deno cache --lock=lock.json --lock-write src/deps.ts')
 })
 
 run()

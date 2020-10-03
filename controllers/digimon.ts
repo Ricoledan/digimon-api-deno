@@ -1,4 +1,4 @@
-// import type { Digimon } from '../types.ts';
+// import type { Digimon } from '../src/types.ts'
 
 const getAllDigimon = () => {
   console.log('get all digimon')

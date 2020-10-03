@@ -6,6 +6,12 @@
 deno run -A drakefile.ts run
 ```
 
+## Lock Dependencies
+
+```CLI
+deno run -A drakefile.ts lock
+```
+
 ## Routes
 
 ```REST

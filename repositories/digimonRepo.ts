@@ -1,6 +1,6 @@
 import client from '../database/database.ts'
-import type { Digimon } from '../types.ts'
-import { moment } from 'https://deno.land/x/moment/moment.ts'
+import type { Digimon } from '../src/types.ts'
+import moment from 'https://deno.land/x/moment@v0.0.1/moment.ts'
 
 class DigimonRepo {
   create(digimon: Digimon) {

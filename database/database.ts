@@ -1,4 +1,4 @@
-import { config } from '../deps.ts'
+import { config } from '../src/deps.ts'
 import { Client } from 'https://deno.land/x/postgres@v0.3.11/mod.ts'
 
 const env = config()

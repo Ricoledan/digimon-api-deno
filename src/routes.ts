@@ -5,7 +5,7 @@ import {
   addDigimon,
   updateDigimon,
   deleteDigimon,
-} from './controllers/digimon.ts'
+} from '../controllers/digimon.ts'
 
 const router = new Router()
 
