@@ -1,1 +1,1 @@
-web: deno run -A drakefile.ts run
+web: deno run --allow-net=:${PORT} index.ts --port=${PORT}
