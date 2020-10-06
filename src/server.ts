@@ -1,9 +1,9 @@
-import { Application, config } from './deps.ts'
+import { Application, config, parse } from './deps.ts'
 import router from './routes.ts'
 
 const env = config()
 const HOST = env.HOST || '127.0.0.1'
-const PORT = env.PORT || 3030
+const PORT = Number(parse(args).port) || 3030
 
 const app = new Application()
 
