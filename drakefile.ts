@@ -2,6 +2,11 @@ import { desc, run, task, sh } from './src/deps.ts'
 
 desc('Run Deno Server')
 task('run', [], async function () {
+  await sh('deno run --allow-net=:${PORT} --port=${PORT} --allow-env --allow-read src/server.ts')
+})
+
+desc('Run Deno Dev Server')
+task('run-dev', [], async function () {
   await sh('denon run --allow-net --allow-env --allow-read src/server.ts')
 })
 
