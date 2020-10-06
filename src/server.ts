@@ -2,6 +2,7 @@ import { Application, config, parse } from './deps.ts'
 import router from './routes.ts'
 
 const env = config()
+const { args } = Deno;
 const HOST = env.HOST || '127.0.0.1'
 const PORT = Number(parse(args).port) || 3030
 
