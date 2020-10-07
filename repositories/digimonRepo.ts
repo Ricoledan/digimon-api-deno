@@ -1,6 +1,6 @@
-import client from '../database/database.ts'
-import type { Digimon } from '../src/types.ts'
-import moment from 'https://deno.land/x/moment@v0.0.1/moment.ts'
+import client from "../database/database.ts";
+import type { Digimon } from "../src/types.ts";
+import moment from "https://deno.land/x/moment@v0.0.1/moment.ts";
 
 class DigimonRepo {
   create(digimon: Digimon) {
@@ -11,20 +11,20 @@ class DigimonRepo {
       digimon.name,
       digimon.description,
       digimon.image_url,
-      moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
-    )
+      moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
+    );
   }
   selectAll() {
-    return client.query('SELECT * FROM digimon ORDER BY id')
+    return client.query("SELECT * FROM digimon ORDER BY id");
   }
   selectByName(name: string) {
-    return client.query(`SELECT * FROM digimon WHERE name == $1`, name)
+    return client.query(`SELECT * FROM digimon WHERE name == $1`, name);
   }
   update(name: string, digimon: Digimon) {
-    const getDigimon = this.selectByName(name)
+    const getDigimon = this.selectByName(name);
     const updateQuery = client.query(
-      `UPDATE digimon SET type = $1, level = $2, name = $3, description = $4, image_url = $5 WHERE name = $3`
-    )
+      `UPDATE digimon SET type = $1, level = $2, name = $3, description = $4, image_url = $5 WHERE name = $3`,
+    );
     return client.query(
       updateQuery,
       digimon.type !== undefined ? digimon.type : getDigimon.type,
@@ -33,7 +33,8 @@ class DigimonRepo {
       digimon.description !== undefined
         ? digimon.description
         : getDigimon.description,
-      digimon.image_url !== undefined ? digimon.image_url : getDigimon.image_url
-    )
+      digimon.image_url !== undefined ? digimon.image_url
+      : getDigimon.image_url,
+    );
   }
 }

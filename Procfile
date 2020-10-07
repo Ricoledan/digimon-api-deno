@@ -1,1 +1,1 @@
-web: deno run -A —-port=${PORT} src/server.ts
+web: deno run -A drakefile.ts run

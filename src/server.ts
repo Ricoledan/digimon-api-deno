@@ -1,16 +1,16 @@
-import { Application, config, parse } from './deps.ts'
-import router from './routes.ts'
+import { Application, config, parse } from "./deps.ts";
+import router from "./routes.ts";
 
-const env = config()
+const env = config();
 const { args } = Deno;
-const HOST = env.HOST || '127.0.0.1'
-const PORT = Number(parse(args).port) || 3030
+const HOST = env.HOST || "127.0.0.1";
+const PORT = Number(parse(args).port) || 3030;
 
-const app = new Application()
+const app = new Application();
 
-app.use(router.routes())
-app.use(router.allowedMethods())
+app.use(router.routes());
+app.use(router.allowedMethods());
 
-console.log(`デジタルモンスター ${HOST}:${PORT} 🦕`)
+console.log(`デジタルモンスター ${HOST}:${PORT} 🦕`);
 
-await app.listen(`${HOST}:${PORT}`)
+await app.listen(`${HOST}:${PORT}`);
