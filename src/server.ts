@@ -12,4 +12,4 @@ app.use(router.allowedMethods());
 
 console.log(`デジタルモンスター ${port} 🦕`);
 
-await app.listen({ port });
+await app.listen({ port: port });
