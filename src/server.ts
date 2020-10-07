@@ -13,4 +13,4 @@ app.use(router.allowedMethods());
 
 console.log(`デジタルモンスター ${HOST}:${PORT} 🦕`);
 
-await app.listen(PORT);
+await app.listen({ PORT });
