@@ -1,1 +1,1 @@
-web: deno run --allow-net=:${PORT} --allow-env --allow-read src/server.ts
+web: deno run -A drakefile.ts run
