@@ -1,11 +1,11 @@
 import { desc, run, sh, task } from "./src/deps.ts";
 
-// desc("Run Deno Server");
-// task("run", [], async function () {
-//   await sh(
-//     "deno run --allow-net --allow-env --allow-read --cached-only src/server.ts --port=${PORT}",
-//   );
-// });
+desc("Run Deno Server");
+task("run", [], async function () {
+  await sh(
+    "deno run --allow-net=:${PORT} --allow-env --allow-read --cached-only src/server.ts --port=${PORT}",
+  );
+});
 
 desc("Run Deno Dev Server");
 task("run-dev", [], async function () {
