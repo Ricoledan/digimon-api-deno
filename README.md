@@ -1,9 +1,9 @@
 # deno-digimon-api
 
-## Run
+## Run Development Environment
 
 ```CLI
-deno run -A drakefile.ts run
+deno run -A drakefile.ts run-dev
 ```
 
 ## Lock Dependencies

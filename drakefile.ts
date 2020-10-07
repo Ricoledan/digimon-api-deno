@@ -1,4 +1,4 @@
-import { desc, run, sh, task } from "./src/deps.ts";
+import { desc, run, sh, task } from "https://deno.land/x/drake@v1.2.6/mod.ts";
 
 desc("Run Deno Server");
 task("run", [], async function () {
