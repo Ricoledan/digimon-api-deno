@@ -3,7 +3,7 @@ import { desc, run, sh, task } from "./src/deps.ts";
 // desc("Run Deno Server");
 // task("run", [], async function () {
 //   await sh(
-//     "",
+//     "deno run --allow-net --allow-env --allow-read --cached-only src/server.ts --port=${PORT}",
 //   );
 // });
 
