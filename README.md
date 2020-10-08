@@ -1,9 +1,27 @@
 # deno-digimon-api
 
+## Run Server
+
+```CLI
+deno run -A drakefile.ts run
+```
+
 ## Run Development Environment
 
 ```CLI
 deno run -A drakefile.ts run-dev
+```
+
+## Heroku Logs
+
+```CLI
+deno run -A drakefile.ts h-logs
+```
+
+## Heroku Procfile
+
+```CLI
+deno run -A drakefile.ts h-local
 ```
 
 ## Lock Dependencies

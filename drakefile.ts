@@ -13,12 +13,12 @@ task('run-dev', [], async function () {
 })
 
 desc('Run Heroku Logs')
-task('heroku-logs', [], async function () {
-  await sh('heroku logs --tail --app digital-monster-api')
+task('h-logs', [], async function () {
+  await sh('h logs --tail --app digital-monster-api')
 })
 
 desc('Test Heroku Procfile')
-task('heroku-local', [], async function () {
+task('h-local', [], async function () {
   await sh('heroku local web')
 })
 
