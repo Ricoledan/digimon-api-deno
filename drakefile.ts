@@ -14,7 +14,7 @@ task('run-dev', [], async function () {
 
 desc('Run Heroku Logs')
 task('h-logs', [], async function () {
-  await sh('h logs --tail --app digital-monster-api')
+  await sh('heroku logs --tail --app digital-monster-api')
 })
 
 desc('Test Heroku Procfile')
