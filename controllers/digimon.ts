@@ -1,19 +1,20 @@
 // import type { Digimon } from '../src/types.ts'
+import { log } from '../src/deps.ts'
 
 const getAllDigimon = () => {
-  console.log("get all digimon");
+  log.info("GET all digimon");
 };
 const getDigimon = () => {
-  console.log("get one digimon");
+  log.info("GET one digimon");
 };
 const addDigimon = () => {
-  console.log("add one digimon");
+  log.info("ADD one digimon");
 };
 const updateDigimon = () => {
-  console.log("update an existing digimon");
+  log.info("UPDATE an existing digimon");
 };
 const deleteDigimon = () => {
-  console.log("delete a digimon");
+  log.info("DELETE a digimon");
 };
 
 export { addDigimon, deleteDigimon, getAllDigimon, getDigimon, updateDigimon };

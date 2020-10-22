@@ -1,4 +1,4 @@
-import { Application, config, flags } from "./deps.ts";
+import { Application, config, flags, log } from "./deps.ts";
 import router from "./routes.ts";
 
 const env = config();
@@ -10,6 +10,6 @@ const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-console.log(`デジタルモンスター ${port} 🦕`);
+log.info(`デジタルモンスター ${port} 🦕`);
 
 await app.listen({ port: port });
