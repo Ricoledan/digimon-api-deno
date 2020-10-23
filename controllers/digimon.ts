@@ -1,20 +1,20 @@
-// import type { Digimon } from '../src/types.ts'
 import { log } from '../src/deps.ts'
+// import type { Digimon } from '../src/types.ts'
 
 const getAllDigimon = () => {
   log.info("GET all digimon");
 };
-const getDigimon = () => {
+const getSingleDigimon = () => {
   log.info("GET one digimon");
 };
-const addDigimon = () => {
+const addSingleDigimon = () => {
   log.info("ADD one digimon");
 };
-const updateDigimon = () => {
+const updateSingleDigimon = () => {
   log.info("UPDATE an existing digimon");
 };
-const deleteDigimon = () => {
+const deleteSingleDigimon = () => {
   log.info("DELETE a digimon");
 };
 
-export { addDigimon, deleteDigimon, getAllDigimon, getDigimon, updateDigimon };
+export { addSingleDigimon, deleteSingleDigimon, getAllDigimon, getSingleDigimon, updateSingleDigimon };
