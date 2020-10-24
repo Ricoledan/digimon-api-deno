@@ -1,10 +1,10 @@
 import { Router } from "./deps.ts";
 import {
-  addSingleDigimon,
-  deleteSingleDigimon,
-  getAllDigimon,
-  getSingleDigimon,
-  updateSingleDigimon,
+  addSingle,
+  deleteSingle,
+  getAll,
+  getSingle,
+  updateSingle,
 } from "../src/controllers/digimon.ts";
 
 const router = new Router();
@@ -57,20 +57,28 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
 .:NINNVFFFNIFNVNFNVNFVNNNVNVNNF:::IN:*V**NI:V::VFIFNNNFV***I:...:VFFFNNFFFNNNNNNNV:.......:::......::::....:::::::::YRREBRAP*NAI
     `;
   })
-  .get("/api/v1/digimon", (ctx: any) => {
-    ctx.response.body = getAllDigimon();
+  .get("/digimon", (ctx: any) => {
+    ctx.response.body = getAll();
   })
-  .get("/api/v1/digimon/:name", (ctx: any) => {
-    ctx.response.body = getSingleDigimon();
+  .get("/digimon/:name", (ctx: any) => {
+    if (ctx.params?.name) {
+      ctx.response.body = getSingle(String(ctx.params.name));
+    }
   })
-  .post("/api/v1/digimon", (ctx: any) => {
-    ctx.response.body = addSingleDigimon();
+  .post("/digimon:name", (ctx: any) => {
+    if (ctx.params?.name) {
+      ctx.response.body = addSingle(String(ctx.params.name));
+    }
   })
-  .put("/api/v1/digimon/:name", (ctx: any) => {
-    ctx.response.body = updateSingleDigimon();
+  .put("/digimon/:name", (ctx: any) => {
+    if (ctx.params?.name) {
+      ctx.response.body = updateSingle(String(ctx.params.name));
+    }
   })
-  .delete("/api/v1/digimon/:name", (ctx: any) => {
-    ctx.response.body = deleteSingleDigimon();
+  .delete("/digimon/:name", (ctx: any) => {
+    if (ctx.params?.name) {
+      ctx.response.body = deleteSingle(String(ctx.params.name));
+    }
   });
 
 export default router;
