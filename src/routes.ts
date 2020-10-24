@@ -5,7 +5,7 @@ import {
   getAllDigimon,
   getSingleDigimon,
   updateSingleDigimon,
-} from "../controllers/digimon.ts";
+} from "../src/controllers/digimon.ts";
 
 const router = new Router();
 
@@ -64,13 +64,13 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     ctx.response.body = getSingleDigimon();
   })
   .post("/api/v1/digimon", (ctx: any) => {
-    ctx.response.body = addSingleDigimon()
+    ctx.response.body = addSingleDigimon();
   })
   .put("/api/v1/digimon/:name", (ctx: any) => {
-    ctx.response.body = updateSingleDigimon()
+    ctx.response.body = updateSingleDigimon();
   })
   .delete("/api/v1/digimon/:name", (ctx: any) => {
-    ctx.response.body = deleteSingleDigimon()
+    ctx.response.body = deleteSingleDigimon();
   });
 
 export default router;
