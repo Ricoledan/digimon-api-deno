@@ -1,15 +1,27 @@
 # deno-digimon-api
 
-## Run Server
+## Run Dev Environment
 
 ```CLI
 deno run -A drakefile.ts run
 ```
 
-## Run Development Environment
+## Format Project
 
 ```CLI
-deno run -A drakefile.ts run-dev
+deno run -A drakefile.ts fmt
+```
+
+## Test Project
+
+```CLI
+deno run -A drakefile.ts test
+```
+
+## Lock Dependencies
+
+```CLI
+deno run -A drakefile.ts lock
 ```
 
 ## Heroku Logs
@@ -24,18 +36,12 @@ deno run -A drakefile.ts h-logs
 deno run -A drakefile.ts h-local
 ```
 
-## Lock Dependencies
-
-```CLI
-deno run -A drakefile.ts lock
-```
-
 ## Routes
 
-```REST
-GET      /api/v1/digimon
-GET      /api/v1/digimon/:id
-POST     /api/v1/digimon
-PUT      /api/v1/digimon/:id
-DELETE   /api/v1/digimon/:id
-```
+| Methods  | Description | Routes        |
+| -------- | ----------- | ------------- |
+| `GET`    | lorem ipsum | digimon       |
+| `GET`    | lorem ipsum | digimon/:name |
+| `POST`   | lorem ipsum | digimon/:name |
+| `PUT`    | lorem ipsum | digimon/:name |
+| `DELETE` | lorem ipsum | digimon/:name |
