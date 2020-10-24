@@ -4,6 +4,16 @@
 
 👾 Deno powered API for Digimon Digital Monsters.
 
+## Routes
+
+| Methods  | Description | Routes        |
+| -------- | ----------- | ------------- |
+| `GET`    | lorem ipsum | digimon       |
+| `GET`    | lorem ipsum | digimon/:name |
+| `POST`   | lorem ipsum | digimon/:name |
+| `PUT`    | lorem ipsum | digimon/:name |
+| `DELETE` | lorem ipsum | digimon/:name |
+
 ## Commands
 
 #### Run Dev Environment
@@ -41,13 +51,3 @@ deno run -A drakefile.ts h-logs
 ```CLI
 deno run -A drakefile.ts h-local
 ```
-
-## Routes
-
-| Methods  | Description | Routes        |
-| -------- | ----------- | ------------- |
-| `GET`    | lorem ipsum | digimon       |
-| `GET`    | lorem ipsum | digimon/:name |
-| `POST`   | lorem ipsum | digimon/:name |
-| `PUT`    | lorem ipsum | digimon/:name |
-| `DELETE` | lorem ipsum | digimon/:name |
