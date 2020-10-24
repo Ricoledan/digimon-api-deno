@@ -1,6 +1,6 @@
 # **デジタルモンスター API**
 
-## Digital Monster API
+#### Digital Monster API
 
 👾 Deno powered API for Digimon Digital Monsters.
 
