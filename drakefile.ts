@@ -12,6 +12,16 @@ task("run-dev", [], async function () {
   await sh("denon run --allow-net --allow-env --allow-read src/server.ts");
 });
 
+desc("Format Deno Project");
+task("fmt", [], async function () {
+  await sh("deno fmt");
+});
+
+desc("Test Deno Project");
+task("test", [], async function () {
+  await sh("deno test");
+});
+
 desc("Run Heroku Logs");
 task("h-logs", [], async function () {
   await sh("heroku logs --tail --app digital-monster-api");
