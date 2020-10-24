@@ -1,36 +1,40 @@
 # deno-digimon-api
 
-## Run Dev Environment
+👾 Deno powered API for Digimon digital monsters.
+
+## Commands
+
+#### Run Dev Environment
 
 ```CLI
 deno run -A drakefile.ts run
 ```
 
-## Format Project
+#### Format Project
 
 ```CLI
 deno run -A drakefile.ts fmt
 ```
 
-## Test Project
+#### Test Project
 
 ```CLI
 deno run -A drakefile.ts test
 ```
 
-## Lock Dependencies
+#### Lock Dependencies
 
 ```CLI
 deno run -A drakefile.ts lock
 ```
 
-## Heroku Logs
+#### Heroku Logs
 
 ```CLI
 deno run -A drakefile.ts h-logs
 ```
 
-## Heroku Procfile
+#### Heroku Procfile
 
 ```CLI
 deno run -A drakefile.ts h-local
