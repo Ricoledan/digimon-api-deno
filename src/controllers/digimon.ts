@@ -1,4 +1,4 @@
-import { log } from '../src/deps.ts'
+import { log } from "../deps.ts";
 // import type { Digimon } from '../src/types.ts'
 
 const getAllDigimon = () => {
@@ -17,4 +17,10 @@ const deleteSingleDigimon = () => {
   log.info("DELETE a digimon");
 };
 
-export { addSingleDigimon, deleteSingleDigimon, getAllDigimon, getSingleDigimon, updateSingleDigimon };
+export {
+  addSingleDigimon,
+  deleteSingleDigimon,
+  getAllDigimon,
+  getSingleDigimon,
+  updateSingleDigimon,
+};
