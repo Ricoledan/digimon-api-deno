@@ -1,16 +1,7 @@
-/*
-Documentation
-TODO: add to readme
-[type](https://wikimon.net/Type) - indicates what sort of category a Digimon's specific species belongs to.
-[attribute](https://wikimon.net/Attribute) - refers to type of computer file a Digimon represents. 
-[field](https://wikimon.net/Field) - overall branching group of Digimon that each one belongs to.
-*/
-
-// Interfaces
 export interface Digimon {
   name: string;
   level: Level;
-  type: string;
+  type: Type;
   attribute: Attribute;
   field?: Field[];
   abilities: Abilities[];
@@ -18,7 +9,6 @@ export interface Digimon {
   artwork: string;
 }
 
-// Types
 type Level =
   | "I"
   | "II"
@@ -185,7 +175,7 @@ type Type =
   | "virtue"
   | "warrior"
   | "weapon"
-  | "wicked god"
+  | "wicked god";
 
 type Attribute = "vaccine" | "data" | "virus" | "free" | "variable" | "unknown";
 
@@ -204,4 +194,8 @@ type Field =
 type Abilities = {
   name: string;
   description: string | null;
+};
+
+type Artwork = {
+  //
 };

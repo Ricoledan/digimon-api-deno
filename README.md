@@ -6,13 +6,25 @@
 
 ## Routes
 
-| Methods  | Description | Routes        |
-| -------- | ----------- | ------------- |
-| `GET`    | lorem ipsum | digimon       |
-| `GET`    | lorem ipsum | digimon/:name |
-| `POST`   | lorem ipsum | digimon/:name |
-| `PUT`    | lorem ipsum | digimon/:name |
-| `DELETE` | lorem ipsum | digimon/:name |
+| Methods  | Description                     | Routes        |
+| -------- | ------------------------------- | ------------- |
+| `GET`    | return all digimon              | digimon       |
+| `GET`    | return specific digimon by name | digimon/:name |
+| `POST`   | create specific digimon by name | digimon/:name |
+| `PUT`    | update specific digimon by name | digimon/:name |
+| `DELETE` | delete specific digimon by name | digimon/:name |
+
+## Expectations
+
+[Type](https://wikimon.net/Type) - indicates what sort of category a Digimon's specific species belongs to.
+
+[Attribute](https://wikimon.net/Attribute) - refers to type of computer file a Digimon represents.
+
+[Field](https://wikimon.net/Field) - overall branching group of Digimon that each one belongs to.
+
+## Resources
+
+[Wikimon](https://wikimon.net/Main_Page) - The best resource for Digimon info since December 2005.
 
 ## Commands
 
