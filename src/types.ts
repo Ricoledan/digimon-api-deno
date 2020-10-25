@@ -10,12 +10,12 @@ export interface Digimon {
 }
 
 type Level =
-  | "I"
-  | "II"
-  | "III"
-  | "IV"
-  | "V"
-  | "VI"
+  | "baby I"
+  | "baby II"
+  | "child"
+  | "adult"
+  | "perfect"
+  | "ultimate"
   | "armor"
   | "hybrid"
   | "unknown";
@@ -196,6 +196,6 @@ type Abilities = {
   description: string | null;
 };
 
-type Artwork = {
-  //
+type Assets = {
+  profile_img: string;
 };
