@@ -7,9 +7,16 @@ const allDigimon: Digimon = {
   level: "III",
   name: "Agumon",
   attribute: "vaccine",
-  description: null,
+  profile: null,
+  field: [
+    "metal empire",
+    "virus busters",
+  ],
   artwork: "https://humulos.com/digimon/images/art/dm20/agu.jpg",
-  abilities: [{ ability: "test1" }, { ability: "test2" }],
+  abilities: [
+    { name: "attack1", description: "lorem ipsum" },
+    { name: "attack2", description: "lorem ipsum" },
+  ],
 };
 
 Deno.test("get all digimon", () => {
