@@ -3,7 +3,7 @@ import { log } from "../deps.ts";
 
 export function getAll() {
   log.info("GET all digimon");
-  return { message: "GET all digimon" };
+  return [{}];
 }
 export function getSingle(name: string) {
   log.info(`GET one ${name}`);
