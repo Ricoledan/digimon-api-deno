@@ -24,6 +24,9 @@
 
 ## Resources
 
+This work could not be done without the help of the digimon community and the folks at [With the Will](https://withthewill.net/), [Wikimon](wikimon), [Digimon Discord Community](https://discord.gg/0VODO3ww0zghqOCO), [File Island: The Complete Digimon Electronics Resource
+](http://lcd.withthewill.net/).
+
 [Wikimon](https://wikimon.net/Main_Page) - The best resource for Digimon info since December 2005.
 
 ## Commands
