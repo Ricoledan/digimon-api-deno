@@ -4,7 +4,7 @@ import { Digimon } from "../src/types.ts";
 
 const allDigimon: Digimon[] = [{
   type: "reptile",
-  level: "III",
+  level: "child",
   name: "Agumon",
   attribute: "vaccine",
   profile: null,
@@ -19,7 +19,7 @@ const allDigimon: Digimon[] = [{
   ],
 }, {
   type: "reptile",
-  level: "III",
+  level: "child",
   name: "Agumon",
   attribute: "vaccine",
   profile: null,
