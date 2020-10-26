@@ -32,18 +32,18 @@ export function getAll(): Digimon[] {
   }];
 }
 export function getSingle(name: string) {
-  log.info(`GET one ${name}`);
-  return { message: `GET one ${name}` };
+  log.info(`GET ${name}`);
+  return { message: `GET ${name}` };
 }
 export function addSingle(name: string) {
-  log.info(`ADD one ${name}`);
-  return { message: `ADD one ${name}` };
+  log.info(`ADD ${name}`);
+  return { message: `ADD ${name}` };
 }
 export function updateSingle(name: string) {
-  log.info(`UPDATE an existing ${name}`);
-  return { message: `UPDATE an existing ${name}` };
+  log.info(`UPDATE ${name}`);
+  return { message: `UPDATE ${name}` };
 }
 export function deleteSingle(name: string) {
-  log.info(`DELETE a ${name}`);
-  return { message: `DELETE a ${name}` };
+  log.info(`DELETE ${name}`);
+  return { message: `DELETE ${name}` };
 }
