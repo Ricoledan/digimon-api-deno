@@ -57,27 +57,57 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
 .:NINNVFFFNIFNVNFNVNFVNNNVNVNNF:::IN:*V**NI:V::VFIFNNNFV***I:...:VFFFNNFFFNNNNNNNV:.......:::......::::....:::::::::YRREBRAP*NAI
     `;
   })
-  .get("/digimon", (ctx: any) => {
-    ctx.response.body = getAll();
+  .get("/digimon", async (ctx: any) => {
+    ctx.response.body = {
+      meta: {
+        code: 200,
+        status: "ok",
+      },
+      data: await getAll(),
+    };
   })
-  .get("/digimon/:name", (ctx: any) => {
+  .get("/digimon/:name", async (ctx: any) => {
     if (ctx.params?.name) {
-      ctx.response.body = getSingle(String(ctx.params.name));
+      ctx.response.body = {
+        meta: {
+          code: 200,
+          status: "ok",
+        },
+        data: await getSingle(String(ctx.params.name)),
+      };
     }
   })
-  .post("/digimon:name", (ctx: any) => {
+  .post("/digimon:name", async (ctx: any) => {
     if (ctx.params?.name) {
-      ctx.response.body = addSingle(String(ctx.params.name));
+      ctx.response.body = {
+        meta: {
+          code: 200,
+          status: "ok",
+        },
+        data: await addSingle(String(ctx.params.name)),
+      };
     }
   })
-  .put("/digimon/:name", (ctx: any) => {
+  .put("/digimon/:name", async (ctx: any) => {
     if (ctx.params?.name) {
-      ctx.response.body = updateSingle(String(ctx.params.name));
+      ctx.response.body = {
+        meta: {
+          code: 200,
+          status: "ok",
+        },
+        data: await updateSingle(String(ctx.params.name)),
+      };
     }
   })
-  .delete("/digimon/:name", (ctx: any) => {
+  .delete("/digimon/:name", async (ctx: any) => {
     if (ctx.params?.name) {
-      ctx.response.body = deleteSingle(String(ctx.params.name));
+      ctx.response.body = {
+        meta: {
+          code: 200,
+          status: "ok",
+        },
+        data: await deleteSingle(String(ctx.params.name)),
+      };
     }
   });
 
