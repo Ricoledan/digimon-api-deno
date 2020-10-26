@@ -7,30 +7,27 @@ const allDigimon: Digimon[] = [{
   level: "child",
   name: "Agumon",
   attribute: "vaccine",
-  profile: null,
+  profile:
+    "A Reptile Digimon which has grown and become able to walk on two legs. Its strength is weak as it is still in the process of growing, but it has a fearless and rather ferocious personality. It spits a fiery breath from its mouth to attack the opponent (Baby Flame).",
   field: [
     "metal empire",
+    "nature spirits",
     "virus busters",
+    "unknown",
   ],
-  artwork: "https://humulos.com/digimon/images/art/dm20/agu.jpg",
+  assets: {
+    profile_img: "",
+  },
   abilities: [
-    { name: "attack1", description: "lorem ipsum" },
-    { name: "attack2", description: null },
-  ],
-}, {
-  type: "reptile",
-  level: "child",
-  name: "Agumon",
-  attribute: "vaccine",
-  profile: null,
-  field: [
-    "metal empire",
-    "virus busters",
-  ],
-  artwork: "https://humulos.com/digimon/images/art/dm20/agu.jpg",
-  abilities: [
-    { name: "attack1", description: "lorem ipsum" },
-    { name: "attack2", description: null },
+    {
+      name: "Baby Flame",
+      description: "Releases a stream of fire from its mouth",
+    },
+    {
+      name: "Baby Burner",
+      description:
+        "Accumulates Baby Flame in its mouth and then spits it out all at once as a much more powerful blast.",
+    },
   ],
 }];
 
