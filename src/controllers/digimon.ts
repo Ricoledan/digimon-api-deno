@@ -6,15 +6,15 @@ export function getAll(): Digimon[] {
   return [{
     type: "reptile",
     level: "child",
-    name: "agumon",
+    name: "Agumon",
     attribute: "vaccine",
     profile:
       "A Reptile Digimon which has grown and become able to walk on two legs. Its strength is weak as it is still in the process of growing, but it has a fearless and rather ferocious personality. It spits a fiery breath from its mouth to attack the opponent (Baby Flame).",
     field: [
-      "metal empire",
-      "nature spirits",
-      "virus busters",
-      "unknown",
+      "Metal Empire",
+      "Nature Spirits",
+      "Virus Busters",
+      "Unknown",
     ],
     assets: {
       profile_img: "https://digimon.net/cimages/digimon/agumon.jpg",
