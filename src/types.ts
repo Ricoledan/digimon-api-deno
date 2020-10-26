@@ -6,7 +6,7 @@ export interface Digimon {
   field?: Field[];
   abilities: Abilities[];
   profile: string | null;
-  artwork: string;
+  assets: Assets;
 }
 
 type Level =
