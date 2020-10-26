@@ -32,8 +32,6 @@ Abilities - signature attacks and abilities
 
 Profile - brief description
 
-Assets - related image assets
-
 ## Resources
 
 ### **Thank You! ❤️**

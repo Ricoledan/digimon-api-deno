@@ -3,21 +3,16 @@ import { getAll } from "../src/controllers/digimon.ts";
 import { Digimon } from "../src/types.ts";
 
 const allDigimon: Digimon[] = [{
-  type: "reptile",
-  level: "child",
   name: "Agumon",
+  level: "child",
+  type: "reptile",
   attribute: "vaccine",
-  profile:
-    "A Reptile Digimon which has grown and become able to walk on two legs. Its strength is weak as it is still in the process of growing, but it has a fearless and rather ferocious personality. It spits a fiery breath from its mouth to attack the opponent (Baby Flame).",
   field: [
     "Metal Empire",
     "Nature Spirits",
     "Virus Busters",
     "Unknown",
   ],
-  assets: {
-    profile_img: "https://digimon.net/cimages/digimon/agumon.jpg",
-  },
   abilities: [
     {
       name: "Baby Flame",
@@ -29,6 +24,10 @@ const allDigimon: Digimon[] = [{
         "Accumulates Baby Flame in its mouth and then spits it out all at once as a much more powerful blast.",
     },
   ],
+  profile:
+    "A Reptile Digimon which has grown and become able to walk on two legs. Its strength is weak as it is still in the process of growing, but it has a fearless and rather ferocious personality. It spits a fiery breath from its mouth to attack the opponent (Baby Flame).",
+
+  profile_img: "https://digimon.net/cimages/digimon/agumon.jpg",
 }];
 
 Deno.test("get all digimon", () => {

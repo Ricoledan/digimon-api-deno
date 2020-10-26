@@ -7,7 +7,7 @@ export interface Digimon {
   group?: Group;
   abilities: Abilities[];
   profile: string | null;
-  assets: Assets;
+  profile_img: string;
   // variations: string;
 }
 
@@ -219,10 +219,6 @@ type Group =
 type Abilities = {
   name: string;
   description: string | null;
-};
-
-type Assets = {
-  profile_img: string;
 };
 
 // type Variations = {}
