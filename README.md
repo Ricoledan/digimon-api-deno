@@ -28,11 +28,11 @@
 
 [Group](https://wikimon.net/Group) - specific theme a digimon is associated with
 
-[Abilities] - signature attacks and abilities
+Abilities - signature attacks and abilities
 
-[Profile] - brief description
+Profile - brief description
 
-[Assets] - related image assets
+Assets - related image assets
 
 ## Resources
 
