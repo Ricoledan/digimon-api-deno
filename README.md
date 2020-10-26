@@ -6,13 +6,30 @@
 
 ## Routes
 
-| Methods  | Description | Routes        |
-| -------- | ----------- | ------------- |
-| `GET`    | lorem ipsum | digimon       |
-| `GET`    | lorem ipsum | digimon/:name |
-| `POST`   | lorem ipsum | digimon/:name |
-| `PUT`    | lorem ipsum | digimon/:name |
-| `DELETE` | lorem ipsum | digimon/:name |
+| Methods  | Description                     | Routes        |
+| -------- | ------------------------------- | ------------- |
+| `GET`    | return all digimon              | digimon       |
+| `GET`    | return specific digimon by name | digimon/:name |
+| `POST`   | create specific digimon by name | digimon/:name |
+| `PUT`    | update specific digimon by name | digimon/:name |
+| `DELETE` | delete specific digimon by name | digimon/:name |
+
+### References
+
+[Type](https://wikimon.net/Type) - indicates what sort of category a Digimon's specific species belongs to.
+
+[Attribute](https://wikimon.net/Attribute) - refers to type of computer file a Digimon represents.
+
+[Field](https://wikimon.net/Field) - overall branching group of Digimon that each one belongs to.
+
+## Resources
+
+### **Thank You! ❤️**
+
+This work could not be done without the help of the digimon community and the folks at [With the Will](https://withthewill.net/), [Wikimon](wikimon), [Digimon Discord Community](https://discord.gg/0VODO3ww0zghqOCO), [File Island: The Complete Digimon Electronics Resource
+](http://lcd.withthewill.net/), the people at Bandai and the amazing people who will use this to power their applications.
+
+[Wikimon](https://wikimon.net/Main_Page) - The best resource for Digimon info since December 2005.
 
 ## Commands
 
