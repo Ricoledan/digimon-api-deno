@@ -4,9 +4,11 @@ export interface Digimon {
   type: Type;
   attribute: Attribute;
   field?: Field[];
+  group?: Group;
   abilities: Abilities[];
   profile: string | null;
   assets: Assets;
+  // variations: string;
 }
 
 type Level =
@@ -180,16 +182,39 @@ type Type =
 type Attribute = "vaccine" | "data" | "virus" | "free" | "variable" | "unknown";
 
 type Field =
-  | "nature spirits"
-  | "deep savers"
-  | "nightmare soldiers"
-  | "wind guardians"
-  | "metal empire"
-  | "unknown"
-  | "dark area"
-  | "virus busters"
-  | "dragon's roar"
-  | "jungle troopers";
+  | "Nature Spirits"
+  | "Deep Savers"
+  | "Nightmare Soldiers"
+  | "Wind Guardians"
+  | "Metal Empire"
+  | "Unknown"
+  | "Dark Area"
+  | "Virus Busters"
+  | "Dragon's Roar"
+  | "Jungle Troopers";
+
+type Group =
+  | "Artifical Digimon"
+  | "BAN-TYO"
+  | "Big Death-Stars"
+  | "Crack Team"
+  | "D-Brigade"
+  | "Dark Masters"
+  | "Digimon King"
+  | "Deva"
+  | "Four Great Dragons"
+  | "Four Holy Beasts"
+  | "Gaia Origin"
+  | "Legend-Arms"
+  | "Olympus Twelve"
+  | "Royal Knights"
+  | "Seven Great Demon Lords"
+  | "Three Gods of Destruction"
+  | "Three Great Angels"
+  | "Three Head Officers"
+  | "Three Musketeers"
+  | "Ultimate 4"
+  | "Warrior Ten";
 
 type Abilities = {
   name: string;
@@ -199,3 +224,6 @@ type Abilities = {
 type Assets = {
   profile_img: string;
 };
+
+// type Variations = {}
+// consider how we might define the variations schema

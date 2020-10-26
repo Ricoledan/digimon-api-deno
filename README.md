@@ -16,11 +16,23 @@
 
 ### References
 
-[Type](https://wikimon.net/Type) - indicates what sort of category a Digimon's specific species belongs to.
+#### Response Schema glossary
 
-[Attribute](https://wikimon.net/Attribute) - refers to type of computer file a Digimon represents.
+[Level](https://wikimon.net/Evolution_Stage) - level of development
 
-[Field](https://wikimon.net/Field) - overall branching group of Digimon that each one belongs to.
+[Type](https://wikimon.net/Type) - indicates what sort of category a Digimon's specific species belongs
+
+[Attribute](https://wikimon.net/Attribute) - refers to type of computer file a Digimon represents
+
+[Field](https://wikimon.net/Field) - overall branching group that each digimon is associated with
+
+[Group](https://wikimon.net/Group) - specific theme a digimon is associated with
+
+[Abilities] - signature attacks and abilities
+
+[Profile] - brief description
+
+[Assets] - related image assets
 
 ## Resources
 
