@@ -17,7 +17,7 @@ export function getAll(): Digimon[] {
       "unknown",
     ],
     assets: {
-      profile_img: "../assets/agumon.jpg",
+      profile_img: "https://digimon.net/cimages/digimon/agumon.jpg",
     },
     abilities: [
       {
