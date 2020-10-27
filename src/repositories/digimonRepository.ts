@@ -4,11 +4,15 @@ import type { Digimon } from "../types.ts";
 const now = new Date();
 
 class DigimonRepository {
-  async selectAll() {
+  async selectAll(): Promise<any> {
     return await client.query("SELECT * FROM digimon ORDER BY id");
   }
 
-  async create(digimon: Digimon) {
+  async selectByName(name: string): Promise<any> {
+    return await client.query(`SELECT * FROM digimon WHERE name == $1`, name);
+  }
+
+  async create(digimon: Digimon): Promise<any> {
     return await client.query(
       `INSERT INTO digimon (name, level, type, attribute, field, group, abilities, profile, profile_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
       digimon.name,
@@ -23,11 +27,7 @@ class DigimonRepository {
     );
   }
 
-  async selectByName(name: string) {
-    return await client.query(`SELECT * FROM digimon WHERE name == $1`, name);
-  }
-
-  async update(name: string, digimon: Digimon) {
+  async update(name: string, digimon: Digimon): Promise<any> {
     const getDigimon = this.selectByName(name);
     const updateQuery = client.query(
       `UPDATE digimon SET name = $1, level = $2, type = $3, attribute = $4, field = $5, group = $6, abilities = $7, profile = $8, profile_url $9 WHERE name = $1`,
@@ -58,3 +58,5 @@ class DigimonRepository {
     );
   }
 }
+
+export default new DigimonRepository();
