@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS digimon (
     profile_img VARCHAR(100),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ,
-    deleted_at TIMESTAMPTZ 
+    deleted_at VARCHAR(100) 
 );
 
 -- functions
