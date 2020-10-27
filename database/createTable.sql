@@ -1,4 +1,4 @@
--- create
+-- create statement
 DROP TABLE digimon;
 CREATE TABLE IF NOT EXISTS digimon (
     id SERIAL PRIMARY KEY,
@@ -11,22 +11,31 @@ CREATE TABLE IF NOT EXISTS digimon (
     abilities JSONB,
     profile VARCHAR(255),
     profile_img VARCHAR(100),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ,
+    deleted_at TIMESTAMPTZ 
 );
 
--- insert
-INSERT INTO digimon(name, level, type, attribute, field, abilities, profile, profile_img)
-VALUES ('agumon', 'child', 'reptile', 'vaccine', 'Metal Empire, Nature Spirits, Virus Busters, Unknown', '{ "name": "Baby Flame", "description": "Releases a stream of fire from its mouth" }', 'A Reptile Digimon which has grown and become able to walk on two legs', 'https://digimon.net/cimages/digimon/agumon.jpg');
+-- functions
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- update
-UPDATE
-   digimon 
-SET
-   name = ''
-WHERE
-   name = ''
+CREATE OR REPLACE FUNCTION set_deleted_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.deleted_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- delete
-DROP TABLE digimon;
+-- triggers
+CREATE TRIGGER set_updated_at
+BEFORE UPDATE
+ON digimon
+FOR EACH ROW
+EXECUTE PROCEDURE set_updated_at();
