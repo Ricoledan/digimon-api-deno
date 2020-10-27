@@ -1,5 +1,4 @@
-import { config } from "../src/deps.ts";
-import { Client } from "https://deno.land/x/postgres@v0.3.11/mod.ts";
+import { Client, config } from "../src/deps.ts";
 
 const env = config();
 
@@ -13,12 +12,15 @@ class Database {
     this.client = new Client({
       user: env.DATABASE_USER,
       database: env.DATABASE_NAME,
-      host: env.DATABASE_HOST,
+      hostname: env.DATABASE_HOST,
       password: env.DATABASE_PASSWORD,
-      port: env.DATABASE_PORT,
+      port: Number(env.DATABASE_PORT),
     });
 
     await this.client.connect();
+    const result = await this.client.query("SELECT * FROM digimon;");
+    console.log(result.rows);
+    await this.client.end();
   }
 }
 
