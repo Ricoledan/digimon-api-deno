@@ -50,7 +50,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     `;
   }
 
-  async getAll(ctx: any): Promise<any> {
+  async getAllDigimon(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {
@@ -61,7 +61,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async getByName(ctx: any): Promise<any> {
+  async getDigimonByName(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {
@@ -72,7 +72,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async create(ctx: any): Promise<any> {
+  async createDigimon(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {
@@ -83,7 +83,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async update(ctx: any): Promise<any> {
+  async updateDigimon(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {
@@ -94,7 +94,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async delete(ctx: any): Promise<any> {
+  async deleteDigimon(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {

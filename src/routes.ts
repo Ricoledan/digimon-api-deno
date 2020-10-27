@@ -1,14 +1,14 @@
 import { Router } from "./deps.ts";
-import DigimonController from "./controllers/digimon.ts";
+import DigimonController from "./controllers/digimonController.ts";
 
 const router = new Router();
 
 router
   .get("/", DigimonController.root)
-  .get("/digimon", DigimonController.getAll)
-  .get("/digimon/:name", DigimonController.getByName)
-  .post("/digimon:name", DigimonController.create)
-  .patch("/digimon/:name", DigimonController.update)
-  .delete("/digimon/:name", DigimonController.delete);
+  .get("/digimon", DigimonController.getAllDigimon)
+  .get("/digimon/:name", DigimonController.getDigimonByName)
+  .post("/digimon:name", DigimonController.createDigimon)
+  .patch("/digimon/:name", DigimonController.updateDigimon)
+  .delete("/digimon/:name", DigimonController.deleteDigimon);
 
 export default router;

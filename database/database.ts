@@ -1,4 +1,4 @@
-import { Client, config } from "../src/deps.ts";
+import { Client, config, log } from "../src/deps.ts";
 
 const env = config();
 
@@ -19,7 +19,7 @@ class Database {
 
     await this.client.connect();
     const result = await this.client.query("SELECT * FROM digimon;");
-    console.log(result.rows);
+    log.info(result.rows);
     await this.client.end();
   }
 }
