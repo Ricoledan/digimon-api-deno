@@ -1,6 +1,8 @@
 import client from "../../database/database.ts";
 import type { Digimon } from "../types.ts";
 
+const now = new Date()
+
 class DigimonRepository {
   create(digimon: Digimon) {
     return client.query(
@@ -25,7 +27,7 @@ class DigimonRepository {
   update(name: string, digimon: Digimon) {
     const getDigimon = this.selectByName(name);
     const updateQuery = client.query(
-      `UPDATE digimon SET name = $1, level = $2, type = $3, attribute = $4, field = $5, group = $6, abilities = $7, profile = $8, profile_url = $9 WHERE name = $1`,
+      `UPDATE digimon SET name = $1, level = $2, type = $3, attribute = $4, field = $5, group = $6, abilities = $7, profile = $8, profile_url $9 WHERE name = $1`,
     );
     return client.query(
       updateQuery,
@@ -41,14 +43,14 @@ class DigimonRepository {
       : getDigimon.abilities,
       digimon.profile !== undefined ? digimon.profile : getDigimon.profile,
       digimon.profile_img !== undefined ? digimon.profile_img
-      : getDigimon.profile_img,
+        : getDigimon.profile_img,
     );
   }
   delete(name: string, digimon: Digimon) {
     const getDigimon = this.selectByName(name);
     const deleteQuery = client.query(
-      `DELETE FROM digimon WHERE name = $1`,
-      name,
+      `UPDATE digimon SET deleted_at = $1`,
+      now,
     );
   }
 }
