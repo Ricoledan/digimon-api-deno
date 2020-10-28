@@ -4,35 +4,78 @@ import type { Digimon } from "../types.ts";
 class digimonService {
   async getAllDigimon(): Promise<any> {
     const data = await digimonRepository.selectAll();
-    const digimon = new Array<Digimon>();
+    const allDigimon = new Array<Digimon>();
 
-    data.rows.map((Digimon: []) => {
+    data.rows.map((digimon: []) => {
       let obj: any;
 
-      data.rowDescription.columns.map((items: any, index: number) => {
-        obj[items.name] = digimon[index];
+      data.rowDescription.columns.map((item: any, index: number) => {
+        obj[item.name] = digimon[index];
       });
 
-      digimon.push(obj);
+      allDigimon.push(obj);
+    });
+
+    return allDigimon;
+  }
+
+  async getDigimonByName(name: string): Promise<any> {
+    const data = await digimonRepository.selectByName(name);
+    let digimon: any;
+
+    data.rows.map((digimonData: []) => {
+      data.rowDescription.columns.map((item: any, index: number) => {
+        digimon[item.name] = digimonData[index];
+      });
     });
 
     return digimon;
   }
 
-  async getDigimonByName(): Promise<any> {
-    //
+  async createDigimon(ctx: any): Promise<any> {
+    const body = await ctx.request.body({
+      contentTypes: {
+        text: ["application/json"],
+      },
+    });
+
+    let digimon: any;
+    digimon.name = body.value.name;
+    digimon.level = body.value.level;
+    digimon.type = body.value.type;
+    digimon.attribute = body.value.attribute;
+    digimon.field = body.value.field;
+    digimon.group = body.value.group;
+    digimon.abilities = body.value.abilities;
+    digimon.profile = body.value.profile;
+    digimon.profile_img = body.value.profile_img;
+
+    return await digimonRepository.create(digimon);
   }
 
-  async createDigimon(): Promise<any> {
-    //
+  async updateDigimon(ctx: any): Promise<any> {
+    const body = await ctx.request.body({
+      contentTypes: {
+        text: ["application/json"],
+      },
+    });
+
+    let digimon: any;
+    digimon.name = ctx.params.name;
+    digimon.level = body.value.level;
+    digimon.type = body.value.type;
+    digimon.attribute = body.value.attribute;
+    digimon.field = body.value.field;
+    digimon.group = body.value.group;
+    digimon.abilities = body.value.abilities;
+    digimon.profile = body.value.profile;
+    digimon.profile_img = body.value.profile_img;
+
+    return await digimonRepository.update(digimon);
   }
 
-  async updateDigimon(): Promise<any> {
-    //
-  }
-
-  async deleteDigimon(): Promise<any> {
-    //
+  async deleteDigimon(name: string): Promise<any> {
+    return await digimonRepository.delete(name);
   }
 }
 

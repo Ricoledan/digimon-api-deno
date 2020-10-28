@@ -68,7 +68,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
         code: 200,
         status: "ok",
       },
-      data: await digimonService.getDigimonByName(),
+      data: await digimonService.getDigimonByName(ctx.params.name),
     };
   }
 
@@ -76,10 +76,9 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     ctx.response.status = 200;
     ctx.response.body = {
       meta: {
-        code: 200,
-        status: "ok",
+        code: 201,
+        status: "created",
       },
-      data: await digimonService.createDigimon(),
     };
   }
 
@@ -90,7 +89,6 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
         code: 200,
         status: "ok",
       },
-      data: await digimonService.updateDigimon(),
     };
   }
 
@@ -101,7 +99,6 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
         code: 200,
         status: "ok",
       },
-      data: await digimonService.deleteDigimon(),
     };
   }
 }
