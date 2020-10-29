@@ -11,7 +11,7 @@
                 "run",
                 "--inspect-brk",
                 "-A",
-                "${file}"
+                "src/server.ts"
             ],
             "attachSimplePort": 9229
         }
