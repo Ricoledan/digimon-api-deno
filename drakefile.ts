@@ -21,9 +21,37 @@ task("lock", [], async function () {
 });
 
 desc("Build Postgres Development Database");
-task("docker", [], async function () {
+task("db-create", [], async function () {
   await sh(
-    "docker run --name digimonpgsql -e POSTGRES_USER=digi_admin_user -e POSTGRES_PASSWORD=admin_password -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
+    "docker run --name digimonpgsql -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=password -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
+  );
+});
+
+desc("Start Postgres Development Database");
+task("db-start", [], async function () {
+  await sh(
+    "docker start digimonpgsql",
+  );
+});
+
+desc("Migrate Postgres Development Data");
+task("db-migrate", [], async function () {
+  await sh(
+    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts migrate -c ./nessie.config.ts",
+  );
+});
+
+desc("Seed Postgres Development Data");
+task("db-seed", [], async function () {
+  await sh(
+    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts seed database/seeds/create_digimon.ts",
+  );
+});
+
+desc("Rollback Postgres Development Data");
+task("db-rollback", [], async function () {
+  await sh(
+    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts rollback all",
   );
 });
 
