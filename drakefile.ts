@@ -20,6 +20,13 @@ task("lock", [], async function () {
   await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
 });
 
+desc("Build Postgres Development Database");
+task("docker", [], async function () {
+  await sh(
+    "docker run --name digimonpgsql -e POSTGRES_USER=digi_admin_user -e POSTGRES_PASSWORD=admin_password -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
+  );
+});
+
 desc("Run Heroku Logs");
 task("h-logs", [], async function () {
   await sh("heroku logs --tail --app digital-monster-api");

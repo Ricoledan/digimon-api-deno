@@ -19,11 +19,11 @@ await log.setup({
   },
 });
 
-app.addEventListener("error", (event) => {
+app.addEventListener("error", (event: any) => {
   log.error(event.error);
 });
 
-app.use(async (ctx, next) => {
+app.use(async (ctx: any, next: any) => {
   try {
     await next();
   } catch (error) {
@@ -33,13 +33,13 @@ app.use(async (ctx, next) => {
   }
 });
 
-app.use(async (ctx, next) => {
+app.use(async (ctx: any, next: any) => {
   await next();
   const rt = ctx.response.headers.get("X-Response-Time");
   log.info(`${ctx.request.method} ${ctx.request.url} - response-time: ${rt}`);
 });
 
-app.use(async (ctx, next) => {
+app.use(async (ctx: any, next: any) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
