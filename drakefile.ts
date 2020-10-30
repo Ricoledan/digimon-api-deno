@@ -20,17 +20,17 @@ task("lock", [], async function () {
   await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
 });
 
-desc("Build Postgres Development Database");
+desc("Build Postgres Development Database Container");
 task("db-create", [], async function () {
   await sh(
-    "docker run --name digimonpgsql -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=password -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
+    "docker build -f docker/Dockerfile -t postgres .",
   );
 });
 
-desc("Start Postgres Development Database");
+desc("Start Postgres Development Database Container");
 task("db-start", [], async function () {
   await sh(
-    "docker start digimonpgsql",
+    "docker run --name digimonpgsql -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
   );
 });
 

@@ -2,6 +2,9 @@ import {
   ClientOptions,
   ClientPostgreSQL,
 } from "https://deno.land/x/nessie/mod.ts";
+import { config } from "./src/deps.ts";
+
+const env = config();
 
 const clientOptions: ClientOptions = {
   migrationFolder: "./database/migrations",
@@ -10,17 +13,15 @@ const clientOptions: ClientOptions = {
 };
 
 const clientPg = new ClientPostgreSQL(clientOptions, {
-  database: "postgres",
-  hostname: "localhost",
-  port: 32769,
-  user: "docker",
-  password: "docker",
+  hostname: env.DATABASE_HOST,
+  port: Number(env.DATABASE_PORT),
+  user: env.DATABASE_USER,
+  password: env.DATABASE_PASSWORD,
 });
 
-const config = {
+const dbConfig = {
   client: clientPg,
-  // Defaults to false, if you want the query builder exposed in migration files, set this to true.
   exposeQueryBuilder: false,
 };
 
-export default config;
+export default dbConfig;
