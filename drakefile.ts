@@ -44,7 +44,7 @@ task("db-migrate", [], async function () {
 desc("Seed Postgres Development Data");
 task("db-seed", [], async function () {
   await sh(
-    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts seed database/seeds/create_digimon.ts",
+    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts seed database/seeds/create_digimon.ts -d",
   );
 });
 
