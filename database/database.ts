@@ -18,8 +18,8 @@ class Database {
     });
 
     await this.client.connect();
-    // const result = await this.client.query("SELECT * FROM digimon;");
-    // log.info(result.rows);
+    const result = await this.client.query("SELECT * FROM digimon;");
+    log.info(result.rows);
     await this.client.end();
   }
 }
