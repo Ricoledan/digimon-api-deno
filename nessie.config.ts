@@ -13,11 +13,11 @@ const clientOptions: ClientOptions = {
 };
 
 const clientPg = new ClientPostgreSQL(clientOptions, {
+  user: env.DATABASE_USER,
   database: env.DATABASE_NAME,
   hostname: env.DATABASE_HOST,
-  port: Number(env.DATABASE_PORT),
-  user: env.DATABASE_USER,
   password: env.DATABASE_PASSWORD,
+  port: Number(env.DATABASE_PORT),
 });
 
 const dbConfig = {

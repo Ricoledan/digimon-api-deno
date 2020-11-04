@@ -37,7 +37,7 @@ task("db-start", [], async function () {
 desc("Migrate Postgres Development Data");
 task("db-migrate", [], async function () {
   await sh(
-    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts migrate -c ./nessie.config.ts",
+    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts migrate -c ./nessie.config.ts -d",
   );
 });
 
