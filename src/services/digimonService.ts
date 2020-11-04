@@ -1,10 +1,10 @@
 import digimonRepository from "../repositories/digimonRepository.ts";
-import type { Digimon } from "../types.ts";
+import type { DigimonProfile } from "../types.ts";
 
 class digimonService {
   async getAllDigimon(): Promise<any> {
     const data = await digimonRepository.selectAll();
-    const allDigimon = new Array<Digimon>();
+    const allDigimon = new Array<DigimonProfile>();
 
     data.rows.map((digimon: []) => {
       let obj: any;

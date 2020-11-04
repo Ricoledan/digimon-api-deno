@@ -1,5 +1,5 @@
 import client from "../../database/database.ts";
-import type { Digimon } from "../types.ts";
+import type { DigimonProfile } from "../types.ts";
 
 const now = new Date();
 
@@ -12,7 +12,7 @@ class DigimonRepository {
     return await client.query(`SELECT * FROM digimon WHERE name == $1`, name);
   }
 
-  async create(digimon: Digimon): Promise<any> {
+  async create(digimon: DigimonProfile): Promise<any> {
     return await client.query(
       `INSERT INTO digimon (name, level, type, attribute, field, group, abilities, profile, profile_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
       digimon.name,
@@ -27,7 +27,7 @@ class DigimonRepository {
     );
   }
 
-  async update(digimon: Digimon): Promise<any> {
+  async update(digimon: DigimonProfile): Promise<any> {
     return await client.query(
       `UPDATE digimon SET level = $1, type = $2, attribute = $3, field = $4, group = $5, abilities = $6, profile = $7, profile_url $8 WHERE name = $9`,
       digimon.level,
