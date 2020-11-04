@@ -1,5 +1,5 @@
 FROM hayd/alpine-deno
-EXPOSE 8000
+EXPOSE 3030
 
 WORKDIR /app
 USER deno

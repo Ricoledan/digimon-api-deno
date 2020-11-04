@@ -21,7 +21,7 @@ services:
       ['run', '--allow-net', '--allow-env', '--allow-read', 'src/server.ts']
     working_dir: /app
     ports:
-      - 8000:8000
+      - 3030:3030
     depends_on:
       - db
     networks:
