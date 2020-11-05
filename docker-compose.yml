@@ -2,7 +2,7 @@ version: '3.4'
 services:
   db:
     image: postgres:12-alpine
-    environment:git 
+    environment:
       POSTGRES_PASSWORD: denopassword
       POSTGRES_USER: deno
       POSTGRES_DB: denoapp
