@@ -2,27 +2,25 @@ import {
   ClientOptions,
   ClientPostgreSQL,
 } from "https://deno.land/x/nessie/mod.ts";
+import type { ConnectionOptions } from "https://deno.land/x/postgres@v0.4.5/connection_params.ts";
 import { config } from "./src/deps.ts";
 
 const env = config();
 
-const clientOptions: ClientOptions = {
+const clientConfig: ClientOptions = {
   migrationFolder: "./database/migrations",
   seedFolder: "./database/seeds",
   experimental: true,
 };
 
-const clientPg = new ClientPostgreSQL(clientOptions, {
-  user: env.DATABASE_USER,
+const connectionConfig: ConnectionOptions = {
   database: env.DATABASE_NAME,
   hostname: env.DATABASE_HOST,
-  password: env.DATABASE_PASSWORD,
   port: Number(env.DATABASE_PORT),
-});
-
-const dbConfig = {
-  client: clientPg,
-  exposeQueryBuilder: false,
+  user: env.DATABASE_USER,
+  password: env.DATABASE_PASSWORD,
 };
 
-export default dbConfig;
+export default {
+  client: new ClientPostgreSQL(clientConfig, connectionConfig),
+};

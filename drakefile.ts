@@ -23,14 +23,7 @@ task("lock", [], async function () {
 desc("Build Postgres Development Database Container");
 task("db-create", [], async function () {
   await sh(
-    "docker build -f docker/Dockerfile -t postgres .",
-  );
-});
-
-desc("Start Postgres Development Database Container");
-task("db-start", [], async function () {
-  await sh(
-    "docker run --name digimonpgsql -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v /docker/data:/var/lib/postgresql/data -d postgres",
+    "docker-compose up",
   );
 });
 
