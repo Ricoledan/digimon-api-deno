@@ -1,6 +1,5 @@
-import client from "../../database/database.ts";
-import type { DigimonProfile } from "../types.ts";
-
+import client from "../../src/pgConfig.ts";
+import type { DigimonProfile } from "../types.ts"
 const now = new Date();
 
 class DigimonRepository {

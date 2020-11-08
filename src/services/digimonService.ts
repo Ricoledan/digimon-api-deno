@@ -16,7 +16,9 @@ class digimonService {
       allDigimon.push(obj);
     });
 
-    return allDigimon;
+    console.log(allDigimon)
+
+    // return allDigimon;
   }
 
   async getDigimonByName(name: string): Promise<any> {
