@@ -5,19 +5,19 @@ export interface DigimonProfile {
   attribute: Attribute;
   field?: Field[];
   group?: Group;
-  abilities: Abilities[];
-  profile: string | null;
+  abilities: { name: string; description: string | null };
+  profile: { image: string; description: string | null };
   profile_img: string;
 }
 
 export interface DigimonSchema {
   _id: { $oid: string };
   name: string;
-  level: string;
-  type: string;
-  attribute: string;
-  field: string | string[];
-  group: string | string[];
+  level: Level;
+  type: Type;
+  attribute: Attribute;
+  field?: Field[];
+  group?: Group;
   abilities: { name: string; description: string | null };
   profile: { image: string; description: string | null };
   weight: string[];
@@ -227,8 +227,3 @@ type Group =
   | "Three Musketeers"
   | "Ultimate 4"
   | "Warrior Ten";
-
-type Abilities = {
-  name: string;
-  description: string | null;
-};
