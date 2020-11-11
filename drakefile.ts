@@ -2,7 +2,9 @@ import { desc, run, sh, task } from "./src/deps.ts";
 
 desc("Run Deno Dev Server");
 task("dev", [], async function () {
-  await sh("denon run --allow-net --allow-env --allow-read src/server.ts");
+  await sh(
+    "denon run --allow-net --allow-env --allow-read --allow-plugin --unstable src/server.ts",
+  );
 });
 
 desc("Format Deno Project");

@@ -10,6 +10,19 @@ export interface DigimonProfile {
   profile_img: string;
 }
 
+export interface DigimonSchema {
+  _id: { $oid: string };
+  name: string;
+  level: string;
+  type: string;
+  attribute: string;
+  field: string | string[];
+  group: string | string[];
+  abilities: { name: string; description: string | null };
+  profile: { image: string; description: string | null };
+  weight: string[];
+}
+
 type Level =
   | "Baby I"
   | "Baby II"
