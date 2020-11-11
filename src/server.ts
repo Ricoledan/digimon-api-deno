@@ -46,6 +46,13 @@ app.use(async (ctx: any, next: any) => {
   ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 });
 
+app.use(async (ctx: any, next: any) => {
+  ctx.response.headers.set('Access-Control-Allow-Origin', '*')
+  ctx.response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+  ctx.response.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+  await next()
+})
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
