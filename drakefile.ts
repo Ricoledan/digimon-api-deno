@@ -19,7 +19,7 @@ task("test", [], async function () {
 
 desc("Lock Deno Dependencies");
 task("lock", [], async function () {
-  await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
+  await sh("deno cache --lock=lock.json --lock-write --unstable src/deps.ts");
 });
 
 desc("Run Heroku Logs");
