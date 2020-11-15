@@ -22,34 +22,6 @@ task("lock", [], async function () {
   await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
 });
 
-desc("Build Postgres Development Database Container");
-task("db-create", [], async function () {
-  await sh(
-    "docker-compose up",
-  );
-});
-
-desc("Migrate Postgres Development Data");
-task("db-migrate", [], async function () {
-  await sh(
-    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts migrate -c ./nessie.config.ts -d",
-  );
-});
-
-desc("Seed Postgres Development Data");
-task("db-seed", [], async function () {
-  await sh(
-    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts seed database/seeds/create_digimon.ts -d",
-  );
-});
-
-desc("Rollback Postgres Development Data");
-task("db-rollback", [], async function () {
-  await sh(
-    "deno run --allow-net --allow-read https://deno.land/x/nessie/cli.ts rollback all",
-  );
-});
-
 desc("Run Heroku Logs");
 task("h-logs", [], async function () {
   await sh("heroku logs --tail --app digital-monster-api");
