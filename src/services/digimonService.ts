@@ -3,23 +3,11 @@ import type { DigimonProfile } from "../types.ts";
 
 class digimonService {
   async getAllDigimon(): Promise<any> {
-    // const data = await digimonRepository.selectAll();
-    // const allDigimon = new Array<DigimonProfile>();
+    const data = await digimonRepository.selectAll();
+    console.log(data);
 
-    // data.rows.map((digimon: []) => {
-    //   let obj: any;
-
-    //   data.rowDescription.columns.map((item: any, index: number) => {
-    //     obj[item.name] = digimon[index];
-    //   });
-
-    //   allDigimon.push(obj);
-    // });
-
-    // console.log(allDigimon);
-
-    // return allDigimon;
-    return 'test1'
+    const transformedObject = "";
+    return "test";
   }
 
   async getDigimonByName(name: string): Promise<any> {
@@ -35,7 +23,7 @@ class digimonService {
   }
 
   async deleteDigimon(name: string): Promise<any> {
-    // 
+    //
   }
 }
 

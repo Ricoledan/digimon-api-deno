@@ -5,12 +5,12 @@ export interface DigimonProfile {
   attribute: Attribute;
   field?: Field[];
   group?: Group;
-  abilities: { name: string; description: string | null };
+  abilities: [{ name: string; description: string | null }];
   profile: { image: string; description: string | null };
   profile_img: string;
 }
 
-export interface DigimonSchema {
+export interface DigimonProfileSchema {
   _id: { $oid: string };
   name: string;
   level: Level;
@@ -18,7 +18,7 @@ export interface DigimonSchema {
   attribute: Attribute;
   field?: Field[];
   group?: Group;
-  abilities: { name: string; description: string | null };
+  abilities: [{ name: string; description: string | null }];
   profile: { image: string; description: string | null };
   weight: string[];
 }

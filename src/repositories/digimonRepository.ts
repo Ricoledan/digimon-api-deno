@@ -1,10 +1,14 @@
 import client from "../../src/helpers/mongoConfig.ts";
 import type { DigimonProfile } from "../types.ts";
+
 const now = new Date();
 
 class DigimonRepository {
   async selectAll(): Promise<any> {
-    return "selectAll";
+    const db = client.database("digimon");
+    const profile = db.collection("profile").find();
+
+    return await profile;
   }
 
   async selectByName(name: string): Promise<any> {
