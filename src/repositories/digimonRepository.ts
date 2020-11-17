@@ -1,25 +1,26 @@
 import client from "../../src/helpers/dbConfig.ts";
-import type { profile } from "../types.ts";
-
-const now = new Date();
+import type { Profile, ProfileSchema } from "../types.ts";
 
 class DigimonRepository {
   async selectAll(): Promise<any> {
     const db = client.database("digimon");
-    const profile = db.collection("profile").find();
+    const allProfiles = await db.collection("profile").find();
 
-    return await profile;
+    return allProfiles as ProfileSchema[];
   }
 
-  async selectByName(name: string): Promise<any> {
-    return "selectByName";
+  async selectDigimonByName(name: string): Promise<any> {
+    const db = client.database("digimon");
+    const oneProfile = await db.collection("profile").findOne({ "name": name });
+
+    return oneProfile as ProfileSchema;
   }
 
-  async create(digimon: profile): Promise<any> {
+  async create(digimon: Profile): Promise<any> {
     return "create";
   }
 
-  async update(digimon: profile): Promise<any> {
+  async update(digimon: Profile): Promise<any> {
     return "update";
   }
 
