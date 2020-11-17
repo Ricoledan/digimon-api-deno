@@ -19,16 +19,16 @@ task("test", [], async function () {
 
 desc("Lock Deno Dependencies");
 task("lock", [], async function () {
-  await sh("deno cache --lock=lock.json --lock-write --unstable src/deps.ts");
+  await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
 });
 
 desc("Run Heroku Logs");
-task("h-logs", [], async function () {
+task("hlogs", [], async function () {
   await sh("heroku logs --tail --app digital-monster-api");
 });
 
 desc("Test Heroku Procfile");
-task("h-local", [], async function () {
+task("hlocal", [], async function () {
   await sh("heroku local web");
 });
 
