@@ -1,26 +1,17 @@
-export interface DigimonProfile {
+export interface profile {
   name: string;
   level: Level;
   type: Type;
-  attribute: Attribute;
+  attribute: Attribute | null;
   field?: Field[];
   group?: Group;
-  abilities: [{ name: string; description: string | null }];
-  profile: { image: string; description: string | null };
-  profile_img: string;
+  technique: [{ name: string; description: string | null }];
+  artwork: string;
+  profile: string;
 }
 
-export interface DigimonProfileSchema {
+export interface profileSchema extends profile {
   _id: { $oid: string };
-  name: string;
-  level: Level;
-  type: Type;
-  attribute: Attribute;
-  field?: Field[];
-  group?: Group;
-  abilities: [{ name: string; description: string | null }];
-  profile: { image: string; description: string | null };
-  weight: string[];
 }
 
 type Level =

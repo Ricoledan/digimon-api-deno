@@ -1,5 +1,5 @@
-import client from "../../src/helpers/mongoConfig.ts";
-import type { DigimonProfile } from "../types.ts";
+import client from "../../src/helpers/dbConfig.ts";
+import type { profile } from "../types.ts";
 
 const now = new Date();
 
@@ -15,11 +15,11 @@ class DigimonRepository {
     return "selectByName";
   }
 
-  async create(digimon: DigimonProfile): Promise<any> {
+  async create(digimon: profile): Promise<any> {
     return "create";
   }
 
-  async update(digimon: DigimonProfile): Promise<any> {
+  async update(digimon: profile): Promise<any> {
     return "update";
   }
 
