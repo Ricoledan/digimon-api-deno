@@ -1,5 +1,4 @@
 import { config, MongoClient } from "../deps.ts";
-// import type { DigimonProfileSchema } from "../types.ts";
 
 const env = config();
 
