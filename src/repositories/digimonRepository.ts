@@ -2,14 +2,14 @@ import client from "../../src/helpers/dbConfig.ts";
 import type { Profile, ProfileSchema } from "../types.ts";
 
 class DigimonRepository {
-  async selectAll(): Promise<any> {
+  async selectAllProfiles(): Promise<any> {
     const db = client.database("digimon");
     const allProfiles = await db.collection("profile").find();
 
     return allProfiles as ProfileSchema[];
   }
 
-  async selectDigimonByName(name: string): Promise<any> {
+  async selectProfileByName(name: string): Promise<any> {
     const db = client.database("digimon");
     const oneProfile = await db.collection("profile").findOne({ "name": name });
 
