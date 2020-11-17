@@ -1,8 +1,10 @@
-import { desc, run, sh, task } from "https://deno.land/x/drake@v1.2.6/mod.ts";
+import { desc, run, sh, task } from "./src/deps.ts";
 
 desc("Run Deno Dev Server");
-task("run", [], async function () {
-  await sh("denon run --allow-net --allow-env --allow-read src/server.ts");
+task("dev", [], async function () {
+  await sh(
+    "denon run --allow-net --allow-env --allow-read --allow-plugin --unstable src/server.ts",
+  );
 });
 
 desc("Format Deno Project");
@@ -17,7 +19,7 @@ task("test", [], async function () {
 
 desc("Lock Deno Dependencies");
 task("lock", [], async function () {
-  await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
+  await sh("deno cache --lock=lock.json --lock-write --unstable src/deps.ts");
 });
 
 desc("Run Heroku Logs");

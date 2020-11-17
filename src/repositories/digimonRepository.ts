@@ -1,60 +1,31 @@
-import client from "../../database/database.ts";
-import type { Digimon } from "../types.ts";
+import client from "../../src/helpers/dbConfig.ts";
+import type { profile } from "../types.ts";
 
 const now = new Date();
 
 class DigimonRepository {
-  async selectAll() {
-    return await client.query("SELECT * FROM digimon ORDER BY id");
+  async selectAll(): Promise<any> {
+    const db = client.database("digimon");
+    const profile = db.collection("profile").find();
+
+    return await profile;
   }
 
-  async create(digimon: Digimon) {
-    return await client.query(
-      `INSERT INTO digimon (name, level, type, attribute, field, group, abilities, profile, profile_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-      digimon.name,
-      digimon.level,
-      digimon.type,
-      digimon.attribute,
-      digimon.field,
-      digimon.group,
-      digimon.abilities,
-      digimon.profile,
-      digimon.profile_img,
-    );
+  async selectByName(name: string): Promise<any> {
+    return "selectByName";
   }
 
-  async selectByName(name: string) {
-    return await client.query(`SELECT * FROM digimon WHERE name == $1`, name);
+  async create(digimon: profile): Promise<any> {
+    return "create";
   }
 
-  async update(name: string, digimon: Digimon) {
-    const getDigimon = this.selectByName(name);
-    const updateQuery = client.query(
-      `UPDATE digimon SET name = $1, level = $2, type = $3, attribute = $4, field = $5, group = $6, abilities = $7, profile = $8, profile_url $9 WHERE name = $1`,
-    );
-    return await client.query(
-      updateQuery,
-      digimon.name !== undefined ? digimon.name : getDigimon.name,
-      digimon.level !== undefined ? digimon.level : getDigimon.level,
-      digimon.type !== undefined ? digimon.type : getDigimon.type,
-      digimon.attribute !== undefined
-        ? digimon.attribute
-        : getDigimon.attribute,
-      digimon.field !== undefined ? digimon.field : getDigimon.field,
-      digimon.group !== undefined ? digimon.group : getDigimon.group,
-      digimon.abilities !== undefined ? digimon.abilities
-      : getDigimon.abilities,
-      digimon.profile !== undefined ? digimon.profile : getDigimon.profile,
-      digimon.profile_img !== undefined ? digimon.profile_img
-      : getDigimon.profile_img,
-    );
+  async update(digimon: profile): Promise<any> {
+    return "update";
   }
 
-  delete(name: string, digimon: Digimon) {
-    const getDigimon = this.selectByName(name);
-    const deleteQuery = client.query(
-      `UPDATE digimon SET deleted_at = $1`,
-      now,
-    );
+  async delete(name: string): Promise<any> {
+    return "delete";
   }
 }
+
+export default new DigimonRepository();
