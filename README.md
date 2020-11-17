@@ -28,7 +28,9 @@
 
 [Group](https://wikimon.net/Group) - specific theme a digimon is associated with
 
-Abilities - signature attacks and abilities
+Technique - signature attacks and abilities
+
+Artwork - profile image
 
 Profile - brief description
 
