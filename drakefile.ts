@@ -3,7 +3,7 @@ import { desc, run, sh, task } from "./src/deps.ts";
 desc("Run Deno Dev Server");
 task("dev", [], async function () {
   await sh(
-    "denon run --allow-net --allow-env --allow-read --allow-plugin --unstable src/server.ts",
+    "denon run --allow-net --allow-env --allow-write --allow-read --allow-plugin --unstable src/server.ts",
   );
 });
 
@@ -19,7 +19,7 @@ task("test", [], async function () {
 
 desc("Lock Deno Dependencies");
 task("lock", [], async function () {
-  await sh("deno cache --lock=lock.json --lock-write src/deps.ts");
+  await sh("deno cache --lock=lock.json --lock-write --unstable src/deps.ts");
 });
 
 desc("Run Heroku Logs");
