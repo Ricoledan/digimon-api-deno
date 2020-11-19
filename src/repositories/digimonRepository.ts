@@ -16,19 +16,19 @@ class DigimonRepository {
     return oneProfile;
   }
 
-  async create(digimon: Profile): Promise<ProfileSchema> {
-    const db = client.database("digimon");
+  async create(profile: Profile): Promise<ProfileSchema> {
+    const db = client.database("profile");
     const createProfile = await db.collection("profile").insertOne({
       __v: 0, // hardcoded 0 for now due to this being a pre-production schema build.
-      name: digimon.name,
-      level: digimon.level,
-      type: digimon.type,
-      attribute: digimon.attribute,
-      field: digimon.field,
-      group: digimon.group,
-      technique: digimon.technique,
-      artwork: digimon.artwork,
-      profile: digimon.profile,
+      name: profile.name,
+      level: profile.level,
+      type: profile.type,
+      attribute: profile.attribute,
+      field: profile.field,
+      group: profile.group,
+      technique: profile.technique,
+      artwork: profile.artwork,
+      profile: profile.profile,
       created_at: "",
       updated_at: "",
       deleted_at: "",

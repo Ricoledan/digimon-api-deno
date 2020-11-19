@@ -79,6 +79,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
         code: 201,
         status: "created",
       },
+      data: await digimonService.createDigimon(),
     };
   }
 
