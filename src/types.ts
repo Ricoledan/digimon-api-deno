@@ -12,7 +12,10 @@ export interface Profile {
 
 export interface ProfileSchema extends Profile {
   _id: { $oid: string };
-  schema_version: number;
+  __v: number;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
 }
 
 type Level =
