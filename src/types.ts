@@ -13,9 +13,11 @@ export interface Profile {
 export interface ProfileSchema extends Profile {
   _id: { $oid: string };
   __v: number;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
+  timestamps: {
+    created_at: string;
+    updated_at: string | null;
+    deleted_at: string | null;
+  };
 }
 
 type Level =
