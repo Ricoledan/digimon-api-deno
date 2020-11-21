@@ -16,9 +16,9 @@ class DigimonRepository {
     return oneProfile;
   }
 
-  async create(profile: Profile): Promise<ProfileSchema> {
-    const db = client.database("profile");
-    const createProfile = await db.collection("profile").insertOne({
+  async create(profile: Profile): Promise<string> {
+    const db = client.database("digimon");
+    await db.collection("profile").insertOne({
       __v: 0, // hardcoded 0 for now due to this being a pre-production schema build.
       name: profile.name,
       level: profile.level,
@@ -29,21 +29,23 @@ class DigimonRepository {
       technique: profile.technique,
       artwork: profile.artwork,
       profile: profile.profile,
-      created_at: "",
-      updated_at: "",
-      deleted_at: "",
+      timestamp: {
+        created_at: "", // TODO: create timestamp
+        updated_at: null,
+        deleted_at: null, // update query to exclude documents that are not null
+      },
     });
 
-    return createProfile;
+    return "digimon profile successfully added to database";
   }
 
-  async update(digimon: Profile): Promise<any> {
-    return "update";
-  }
+  // async update(profile: Profile): Promise<any> {
+  //   return "update";
+  // }
 
-  async delete(name: string): Promise<any> {
-    return "delete";
-  }
+  // async delete(name: string): Promise<any> {
+  //   return "delete";
+  // }
 }
 
 export default new DigimonRepository();

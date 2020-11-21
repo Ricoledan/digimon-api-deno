@@ -53,55 +53,40 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   async getAllDigimon(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
-      meta: {
-        code: 200,
-        status: "ok",
-      },
+      success: true,
       data: await digimonService.getAllDigimon(),
     };
   }
-
+  // TODO: create interface for responses
   async getDigimonByName(ctx: any): Promise<any> {
     ctx.response.status = 200;
     ctx.response.body = {
-      meta: {
-        code: 200,
-        status: "ok",
-      },
+      success: true,
       data: await digimonService.getDigimonByName(ctx.params.name),
     };
   }
 
   async createDigimon(ctx: any): Promise<any> {
-    ctx.response.status = 200;
-    ctx.response.body = {
-      meta: {
-        code: 201,
-        status: "created",
-      },
-      data: await digimonService.createDigimon(),
-    };
+    const data = await ctx.request.body().value;
+
+    if (!data) {
+      ctx.response.status = 404;
+      ctx.response.body = {
+        success: false,
+        data: "no data provided",
+      };
+    } else {
+      ctx.response.status = 200;
+      ctx.response.body = {
+        success: true,
+        data: await digimonService.createDigimon(data),
+      };
+    }
   }
 
-  async updateDigimon(ctx: any): Promise<any> {
-    ctx.response.status = 200;
-    ctx.response.body = {
-      meta: {
-        code: 200,
-        status: "ok",
-      },
-    };
-  }
+  // async updateDigimon(ctx: any): Promise<any> {}
 
-  async deleteDigimon(ctx: any): Promise<any> {
-    ctx.response.status = 200;
-    ctx.response.body = {
-      meta: {
-        code: 200,
-        status: "ok",
-      },
-    };
-  }
+  // async deleteDigimon(ctx: any): Promise<any> {}
 }
 
 export default new DigimonController();
