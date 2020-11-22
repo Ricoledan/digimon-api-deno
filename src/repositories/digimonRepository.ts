@@ -1,10 +1,12 @@
 import client from "../../src/helpers/dbConfig.ts";
 import type { Profile, ProfileSchema } from "../types.ts";
 
+const now = new Date().toISOString();
+
 class DigimonRepository {
   async selectAllProfiles(): Promise<ProfileSchema[]> {
     const db = client.database("digimon");
-    const allProfiles = await db.collection("profile").find();
+    const allProfiles = await db.collection("profile").find({ "timestamp.deleted_at": { $eq: null } });
 
     return allProfiles;
   }
@@ -18,8 +20,8 @@ class DigimonRepository {
 
   async create(profile: Profile): Promise<string> {
     const db = client.database("digimon");
-    await db.collection("profile").insertOne({
-      __v: 0, // hardcoded 0 for now due to this being a pre-production schema build.
+    const createQuery: ProfileSchema = {
+      __v: 0,
       name: profile.name,
       level: profile.level,
       type: profile.type,
@@ -30,11 +32,12 @@ class DigimonRepository {
       artwork: profile.artwork,
       profile: profile.profile,
       timestamp: {
-        created_at: "", // TODO: create timestamp
+        created_at: now,
         updated_at: null,
-        deleted_at: null, // update query to exclude documents that are not null
+        deleted_at: null,
       },
-    });
+    }
+    await db.collection("profile").insertOne(createQuery) as ProfileSchema;
 
     return "digimon profile successfully added to database";
   }
