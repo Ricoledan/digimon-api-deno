@@ -60,7 +60,8 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async getDigimonByName(ctx: Context): Promise<void> {
+  // deno-lint-ignore no-explicit-any
+  async getDigimonByName(ctx: Context | any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
