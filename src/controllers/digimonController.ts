@@ -1,4 +1,5 @@
 import digimonService from "../services/digimonService.ts";
+import type { Profile } from "../types.ts";
 
 class DigimonController {
   // deno-lint-ignore no-explicit-any
@@ -71,7 +72,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
 
   // deno-lint-ignore no-explicit-any
   async createDigimon(ctx: any): Promise<void> {
-    const data = await ctx.request.body().value;
+    const data: Profile = await ctx.request.body().value;
 
     if (!data) {
       ctx.response.status = 404;
