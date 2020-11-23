@@ -2,9 +2,9 @@ export interface Profile {
   name: string;
   level: Level;
   type: Type;
-  attribute: Attribute | null;
-  field?: Field[];
-  group?: Group;
+  attribute: Attribute;
+  field: Field[] | null;
+  group: Group | null;
   technique: [{ name: string; description: string | null }];
   artwork: string;
   profile: string;
