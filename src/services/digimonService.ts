@@ -20,11 +20,8 @@ class digimonService {
     return data;
   }
 
-  async updateProfile(name: string): Promise<any> {
-    const getExistingProfile = await digimonRepository.selectProfileByName(name);
-    console.log(getExistingProfile);
-    const updateProfile = await digimonRepository.update(getExistingProfile)
-    
+  async updateProfile(profileData: Profile): Promise<string> {
+    const updateProfile = await digimonRepository.update(profileData);
 
     return updateProfile;
   }
