@@ -1,12 +1,15 @@
 import client from "../../src/helpers/dbConfig.ts";
 import type { Profile, ProfileSchema } from "../types.ts";
+import { time } from "../deps.ts";
 
-const now = new Date().toISOString();
+const now = time().tz("America/New_york").t.toISOString();
 
 class DigimonRepository {
   async selectAllProfiles(): Promise<ProfileSchema[]> {
     const db = client.database("digimon");
-    const allProfiles = await db.collection("profile").find({ "timestamp.deleted_at": { $eq: null } });
+    const allProfiles = await db.collection("profile").find(
+      { "timestamp.deleted_at": { $eq: null } },
+    );
 
     return allProfiles;
   }
@@ -36,7 +39,7 @@ class DigimonRepository {
         updated_at: null,
         deleted_at: null,
       },
-    }
+    };
     await db.collection("profile").insertOne(createQuery) as ProfileSchema;
 
     return "digimon profile successfully added to database";

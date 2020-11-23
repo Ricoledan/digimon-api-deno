@@ -1,8 +1,7 @@
 import digimonService from "../services/digimonService.ts";
-import type { Response } from "../../src/types.ts"
-import { Context } from "https://deno.land/x/oak@v6.3.1/context.ts";
 
 class DigimonController {
+  // deno-lint-ignore no-explicit-any
   async root(ctx: any) {
     ctx.response.status = 200;
     ctx.response.body = `
@@ -52,7 +51,8 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     `;
   }
 
-  async getAllDigimon(ctx: any): Promise<any> {
+  // deno-lint-ignore no-explicit-any
+  async getAllDigimon(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -61,7 +61,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   }
 
   // deno-lint-ignore no-explicit-any
-  async getDigimonByName(ctx: any): Promise<any> {
+  async getDigimonByName(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -69,7 +69,8 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async createDigimon(ctx: any): Promise<any> {
+  // deno-lint-ignore no-explicit-any
+  async createDigimon(ctx: any): Promise<void> {
     const data = await ctx.request.body().value;
 
     if (!data) {
