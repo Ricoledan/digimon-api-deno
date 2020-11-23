@@ -87,7 +87,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
       ctx.response.status = 404;
       ctx.response.body = {
         success: false,
-        data: "missing required field",
+        data: "missing required field(s)",
       };
     } else {
       ctx.response.status = 200;
