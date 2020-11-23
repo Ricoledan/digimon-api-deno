@@ -1,6 +1,6 @@
 import client from "../../src/helpers/dbConfig.ts";
 import type { Profile, ProfileSchema } from "../types.ts";
-import { time } from "../deps.ts";
+import { log, time } from "../deps.ts";
 
 const now = time().tz("America/New_york").t.toISOString();
 
@@ -29,8 +29,8 @@ class DigimonRepository {
       level: profile.level,
       type: profile.type,
       attribute: profile.attribute,
-      field: profile.field,
-      group: profile.group,
+      field: profile.field ? profile.field : null,
+      group: profile.group ? profile.group : null,
       technique: profile.technique,
       artwork: profile.artwork,
       profile: profile.profile,
@@ -40,17 +40,40 @@ class DigimonRepository {
         deleted_at: null,
       },
     };
-    await db.collection("profile").insertOne(createQuery);
 
-    return "digimon profile successfully added to database";
+    try {
+      await db.collection("profile").insertOne(createQuery);
+    } catch (error) {
+      log.error(error);
+    }
+
+    return "digimon profile successfully added";
   }
 
-  async update(profile: Profile): Promise<string> {
-    // const db = client.database("digimon");
-    // const updateQuery = client.selectProfileByName()
-    // await db.collection("profile").updateOne(updateQuery);
+  async update(profileData: Profile): Promise<string> {
+    const db = client.database("digimon");
 
-    return "update";
+    try {
+      await db.collection("profile").updateOne(
+        { "name": profileData.name },
+        {
+          $set: {
+            level: profileData.level,
+            type: profileData.type,
+            attribute: profileData.attribute,
+            field: profileData.field ? profileData.field : null,
+            group: profileData.group ? profileData.group : null,
+            technique: profileData.technique,
+            artwork: profileData.artwork,
+            profile: profileData.profile,
+          },
+        },
+      );
+    } catch (error) {
+      log.error(error);
+    }
+
+    return "digimon profile successfully updated";
   }
 
   // async delete(name: string): Promise<any> {
