@@ -45,9 +45,13 @@ class DigimonRepository {
     return "digimon profile successfully added to database";
   }
 
-  // async update(profile: Profile): Promise<any> {
-  //   return "update";
-  // }
+  async update(profile: Profile): Promise<string> {
+    // const db = client.database("digimon");
+    // const updateQuery = client.selectProfileByName()
+    // await db.collection("profile").updateOne(updateQuery);
+
+    return "update";
+  }
 
   // async delete(name: string): Promise<any> {
   //   return "delete";

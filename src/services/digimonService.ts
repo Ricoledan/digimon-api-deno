@@ -20,9 +20,14 @@ class digimonService {
     return data;
   }
 
-  // async updateProfile(ctx: any): Promise<Profile> {
-  //   //
-  // }
+  async updateProfile(name: string): Promise<any> {
+    const getExistingProfile = await digimonRepository.selectProfileByName(name);
+    console.log(getExistingProfile);
+    const updateProfile = await digimonRepository.update(getExistingProfile)
+    
+
+    return updateProfile;
+  }
 
   // async deleteProfile(name: string): Promise<Profile> {
   //   //

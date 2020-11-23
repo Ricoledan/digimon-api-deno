@@ -98,7 +98,16 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  // async updateProfile(ctx: any): Promise<any> {}
+  // deno-lint-ignore no-explicit-any
+  async updateProfile(ctx: any): Promise<any> {
+    const data: Profile = await ctx.request.body().value;
+
+    ctx.response.status = 200;
+    ctx.response.body = {
+      success: true,
+      data: await digimonService.updateProfile(ctx.params.name),
+    };
+  }
 
   // async deleteProfile(ctx: any): Promise<any> {}
 }
