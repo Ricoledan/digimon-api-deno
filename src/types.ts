@@ -20,6 +20,11 @@ export interface ProfileSchema extends Profile {
   };
 }
 
+export interface Response {
+  success: boolean;
+  data: Profile[];
+}
+
 type Level =
   | "baby I"
   | "baby II"

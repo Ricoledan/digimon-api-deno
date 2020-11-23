@@ -1,7 +1,9 @@
 import digimonService from "../services/digimonService.ts";
+import type { Response } from "../../src/types.ts"
+import { Context } from "https://deno.land/x/oak@v6.3.1/context.ts";
 
 class DigimonController {
-  async root(ctx: any) {
+  async root(ctx: Context) {
     ctx.response.status = 200;
     ctx.response.body = `
 ****:***:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.::::::::::::::.:.::.::::::::::::::.:::::::::::::::::::::::::
@@ -50,15 +52,15 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     `;
   }
 
-  async getAllDigimon(ctx: any): Promise<any> {
+  async getAllDigimon(ctx: Context): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
       data: await digimonService.getAllDigimon(),
     };
   }
-  // TODO: create interface for responses
-  async getDigimonByName(ctx: any): Promise<any> {
+
+  async getDigimonByName(ctx: Context): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -66,7 +68,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async createDigimon(ctx: any): Promise<any> {
+  async createDigimon(ctx: Context): Promise<void> {
     const data = await ctx.request.body().value;
 
     if (!data) {
