@@ -61,7 +61,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   }
 
   // deno-lint-ignore no-explicit-any
-  async getDigimonByName(ctx: Context<Record<string, any>>): Promise<void> {
+  async getDigimonByName(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
