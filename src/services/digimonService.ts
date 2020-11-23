@@ -2,29 +2,29 @@ import digimonRepository from "../repositories/digimonRepository.ts";
 import type { Profile } from "../types.ts";
 
 class digimonService {
-  async getAllDigimon(): Promise<Profile[] | string> {
+  async getAllProfiles(): Promise<Profile[] | string> {
     const data = await digimonRepository.selectAllProfiles();
 
     return data;
   }
 
-  async getDigimonByName(name: string): Promise<Profile> {
+  async getProfileByName(name: string): Promise<Profile> {
     const data = await digimonRepository.selectProfileByName(name);
 
     return data;
   }
 
-  async createDigimon(profileData: Profile): Promise<string> {
+  async createProfile(profileData: Profile): Promise<string> {
     const data = await digimonRepository.create(profileData);
 
     return data;
   }
 
-  // async updateDigimon(ctx: any): Promise<Profile> {
+  // async updateProfile(ctx: any): Promise<Profile> {
   //   //
   // }
 
-  // async deleteDigimon(name: string): Promise<Profile> {
+  // async deleteProfile(name: string): Promise<Profile> {
   //   //
   // }
 }

@@ -40,7 +40,7 @@ class DigimonRepository {
         deleted_at: null,
       },
     };
-    await db.collection("profile").insertOne(createQuery) as ProfileSchema;
+    await db.collection("profile").insertOne(createQuery);
 
     return "digimon profile successfully added to database";
   }

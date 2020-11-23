@@ -5,10 +5,10 @@ const router = new Router();
 
 router
   .get("/", DigimonController.root)
-  .get("/digimon", DigimonController.getAllDigimon)
-  .get("/digimon/:name", DigimonController.getDigimonByName)
-  .post("/digimon", DigimonController.createDigimon);
-// .put("/digimon/:name", DigimonController.updateDigimon)
-// .delete("/digimon/:name", DigimonController.deleteDigimon);
+  .get("/digimon", DigimonController.getAllProfiles)
+  .get("/digimon/:name", DigimonController.getProfileByName)
+  .post("/digimon", DigimonController.createProfile);
+// .put("/digimon/:name", DigimonController.updateProfile)
+// .delete("/digimon/:name", DigimonController.deleteProfile);
 
 export default router;

@@ -53,25 +53,25 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   }
 
   // deno-lint-ignore no-explicit-any
-  async getAllDigimon(ctx: any): Promise<void> {
+  async getAllProfiles(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
-      data: await digimonService.getAllDigimon(),
+      data: await digimonService.getAllProfiles(),
     };
   }
 
   // deno-lint-ignore no-explicit-any
-  async getDigimonByName(ctx: any): Promise<void> {
+  async getProfileByName(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
-      data: await digimonService.getDigimonByName(ctx.params.name),
+      data: await digimonService.getProfileByName(ctx.params.name),
     };
   }
 
   // deno-lint-ignore no-explicit-any
-  async createDigimon(ctx: any): Promise<void> {
+  async createProfile(ctx: any): Promise<void> {
     const data: Profile = await ctx.request.body().value;
 
     if (!data) {
@@ -80,18 +80,27 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
         success: false,
         data: "no data provided",
       };
+    } else if (
+      !data.name || !data.level || !data.type || !data.attribute ||
+      !data.technique || !data.artwork || !data.profile
+    ) {
+      ctx.response.status = 404;
+      ctx.response.body = {
+        success: false,
+        data: "missing required field",
+      };
     } else {
       ctx.response.status = 200;
       ctx.response.body = {
         success: true,
-        data: await digimonService.createDigimon(data),
+        data: await digimonService.createProfile(data),
       };
     }
   }
 
-  // async updateDigimon(ctx: any): Promise<any> {}
+  // async updateProfile(ctx: any): Promise<any> {}
 
-  // async deleteDigimon(ctx: any): Promise<any> {}
+  // async deleteProfile(ctx: any): Promise<any> {}
 }
 
 export default new DigimonController();
