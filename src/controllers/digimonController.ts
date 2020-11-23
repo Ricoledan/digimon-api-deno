@@ -72,17 +72,18 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
 
   // deno-lint-ignore no-explicit-any
   async createProfile(ctx: any): Promise<void> {
-    const data: Profile = await ctx.request.body().value;
+    const requestBody: Profile = await ctx.request.body().value;
 
-    if (!data) {
+    if (!requestBody) {
       ctx.response.status = 404;
       ctx.response.body = {
         success: false,
         data: "no data provided",
       };
     } else if (
-      !data.name || !data.level || !data.type || !data.attribute ||
-      !data.technique || !data.artwork || !data.profile
+      !requestBody.name || !requestBody.level || !requestBody.type ||
+      !requestBody.attribute ||
+      !requestBody.technique || !requestBody.artwork || !requestBody.profile
     ) {
       ctx.response.status = 404;
       ctx.response.body = {
@@ -93,19 +94,19 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
       ctx.response.status = 200;
       ctx.response.body = {
         success: true,
-        data: await digimonService.createProfile(data),
+        data: await digimonService.createProfile(requestBody),
       };
     }
   }
 
   // deno-lint-ignore no-explicit-any
   async updateProfile(ctx: any): Promise<any> {
-    const data: Profile = await ctx.request.body().value;
+    const requestBody: Profile = await ctx.request.body().value;
 
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
-      data: await digimonService.updateProfile(ctx.params.name),
+      data: await digimonService.updateProfile(requestBody),
     };
   }
 
