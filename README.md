@@ -10,7 +10,7 @@
 | -------- | ------------------------------- | ------------- |
 | `GET`    | return all digimon              | digimon       |
 | `GET`    | return specific digimon by name | digimon/:name |
-| `POST`   | create specific digimon by name | digimon/:name |
+| `POST`   | create specific digimon by name | digimon       |
 | `PUT`    | update specific digimon by name | digimon/:name |
 | `DELETE` | delete specific digimon by name | digimon/:name |
 

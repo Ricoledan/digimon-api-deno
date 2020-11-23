@@ -11,8 +11,18 @@ export interface Profile {
 }
 
 export interface ProfileSchema extends Profile {
-  _id: { $oid: string };
-  schema_version: number;
+  _id?: { $oid: string };
+  __v: number;
+  timestamp: {
+    created_at: string;
+    updated_at: string | null;
+    deleted_at: string | null;
+  };
+}
+
+export interface Response {
+  success: boolean;
+  data: Profile[];
 }
 
 type Level =
