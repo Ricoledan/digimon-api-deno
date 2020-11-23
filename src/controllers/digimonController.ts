@@ -82,7 +82,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
       };
     } else if (
       !requestBody.name || !requestBody.level || !requestBody.type ||
-      !requestBody.attribute ||
+      !requestBody.attribute || !requestBody.field || !requestBody.group ||
       !requestBody.technique || !requestBody.artwork || !requestBody.profile
     ) {
       ctx.response.status = 404;
