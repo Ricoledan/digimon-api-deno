@@ -26,9 +26,11 @@ class digimonService {
     return updateProfile;
   }
 
-  // async deleteProfile(name: string): Promise<Profile> {
-  //   //
-  // }
+  async deleteProfile(name: string): Promise<any> {
+    const deleteProfile = await digimonRepository.delete(name);
+
+    return deleteProfile;
+  }
 }
 
 export default new digimonService();

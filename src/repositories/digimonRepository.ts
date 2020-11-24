@@ -88,9 +88,33 @@ class DigimonRepository {
     }
   }
 
-  // async delete(name: string): Promise<any> {
-  //   return "delete";
-  // }
+  // deno-lint-ignore no-explicit-any
+  async delete(name: string): Promise<any> {
+    const db = client.database("digimon");
+    const documentObj = await db.collection("profile").findOne(
+      { "name": name },
+    );
+    const getCreatedTimestamp = documentObj.timestamp.created_at;
+
+    try {
+      const deleteDocument = await db.collection("profile").updateOne(
+        { "name": name },
+        {
+          $set: {
+            timestamp: {
+              created_at: getCreatedTimestamp,
+              deleted_at: now,
+              updated_at: now,
+            },
+          },
+        },
+      );
+
+      return deleteDocument;
+    } catch (error) {
+      log.error(error);
+    }
+  }
 }
 
 export default new DigimonRepository();
