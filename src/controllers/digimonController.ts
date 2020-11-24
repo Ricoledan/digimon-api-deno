@@ -103,7 +103,6 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   // deno-lint-ignore no-explicit-any
   async updateProfile(ctx: any): Promise<any> {
     const requestBody: Profile = await ctx.request.body().value;
-    console.log(requestBody);
 
     if (!requestBody) {
       ctx.response.status = 404;

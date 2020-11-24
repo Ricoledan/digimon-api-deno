@@ -21,7 +21,8 @@ class DigimonRepository {
     return oneProfile;
   }
 
-  async create(profile: Profile): Promise<string> {
+  // deno-lint-ignore no-explicit-any
+  async create(profile: Profile): Promise<any> {
     const db = client.database("digimon");
     const createQuery: ProfileSchema = {
       __v: 0,
@@ -42,14 +43,14 @@ class DigimonRepository {
     };
 
     try {
-      await db.collection("profile").insertOne(createQuery);
+      const create = await db.collection("profile").insertOne(createQuery);
+
+      return create;
     } catch (error) {
       log.error(error);
     }
-
-    return "digimon profile successfully added";
   }
-  // TODO: Send data back up and use the updated field to confirm success. Do same for create
+
   // deno-lint-ignore no-explicit-any
   async update(profile: Profile): Promise<any> {
     const db = client.database("digimon");
