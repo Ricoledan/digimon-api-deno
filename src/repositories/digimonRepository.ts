@@ -1,6 +1,6 @@
 import client from "../../src/helpers/dbConfig.ts";
 import type { Profile, ProfileSchema } from "../types.ts";
-import { time } from "../deps.ts";
+import { log, time } from "../deps.ts";
 
 const now = time().tz("America/New_york").t.toISOString();
 
@@ -21,7 +21,8 @@ class DigimonRepository {
     return oneProfile;
   }
 
-  async create(profile: Profile): Promise<string> {
+  // deno-lint-ignore no-explicit-any
+  async create(profile: Profile): Promise<any> {
     const db = client.database("digimon");
     const createQuery: ProfileSchema = {
       __v: 0,
@@ -29,8 +30,8 @@ class DigimonRepository {
       level: profile.level,
       type: profile.type,
       attribute: profile.attribute,
-      field: profile.field,
-      group: profile.group,
+      field: profile.field ? profile.field : null,
+      group: profile.group ? profile.group : null,
       technique: profile.technique,
       artwork: profile.artwork,
       profile: profile.profile,
@@ -40,14 +41,52 @@ class DigimonRepository {
         deleted_at: null,
       },
     };
-    await db.collection("profile").insertOne(createQuery);
 
-    return "digimon profile successfully added to database";
+    try {
+      const create = await db.collection("profile").insertOne(createQuery);
+
+      return create;
+    } catch (error) {
+      log.error(error);
+    }
   }
 
-  // async update(profile: Profile): Promise<any> {
-  //   return "update";
-  // }
+  // deno-lint-ignore no-explicit-any
+  async update(profile: Profile): Promise<any> {
+    const db = client.database("digimon");
+    const documentObj = await db.collection("profile").findOne(
+      { "name": profile.name },
+    );
+    const getCreatedTimestamp = documentObj.timestamp.created_at;
+    const getDeletedTimestamp = documentObj.timestamp.deleted_at;
+
+    try {
+      const update = await db.collection("profile").updateOne(
+        { "name": profile.name },
+        {
+          $set: {
+            level: profile.level,
+            type: profile.type,
+            attribute: profile.attribute,
+            field: profile.field ? profile.field : null,
+            group: profile.group ? profile.group : null,
+            technique: profile.technique,
+            artwork: profile.artwork,
+            profile: profile.profile,
+            timestamp: {
+              created_at: getCreatedTimestamp,
+              updated_at: now,
+              deleted_at: getDeletedTimestamp,
+            },
+          },
+        },
+      );
+
+      return update;
+    } catch (error) {
+      log.error(error);
+    }
+  }
 
   // async delete(name: string): Promise<any> {
   //   return "delete";
