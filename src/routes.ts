@@ -8,7 +8,7 @@ router
   .get("/digimon", DigimonController.getAllProfiles)
   .get("/digimon/:name", DigimonController.getProfileByName)
   .post("/digimon", DigimonController.createProfile)
-  .put("/digimon/:name", DigimonController.updateProfile);
-//   .delete("/digimon/:name", DigimonController.deleteProfile)
+  .put("/digimon/:name", DigimonController.updateProfile)
+  .delete("/digimon/:name", DigimonController.deleteProfile);
 
 export default router;

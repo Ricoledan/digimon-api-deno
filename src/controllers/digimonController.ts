@@ -3,7 +3,7 @@ import type { Profile } from "../types.ts";
 
 class DigimonController {
   // deno-lint-ignore no-explicit-any
-  async root(ctx: any) {
+  root(ctx: any) {
     ctx.response.status = 200;
     ctx.response.body = `
 ****:***:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.::::::::::::::.:.::.::::::::::::::.:::::::::::::::::::::::::
@@ -129,7 +129,14 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  // async deleteProfile(ctx: any): Promise<any> {}
+  // deno-lint-ignore no-explicit-any
+  async deleteProfile(ctx: any): Promise<any> {
+    ctx.response.status = 200;
+    ctx.response.body = {
+      success: true,
+      data: await digimonService.deleteProfile(ctx.params.name),
+    };
+  }
 }
 
 export default new DigimonController();
