@@ -49,31 +49,42 @@ class DigimonRepository {
 
     return "digimon profile successfully added";
   }
-
-  async update(profileData: Profile): Promise<string> {
+  // TODO: Send data back up and use the updated field to confirm success. Do same for create
+  // deno-lint-ignore no-explicit-any
+  async update(profile: Profile): Promise<any> {
     const db = client.database("digimon");
+    const documentObj = await db.collection("profile").findOne(
+      { "name": profile.name },
+    );
+    const getCreatedTimestamp = documentObj.timestamp.created_at;
+    const getDeletedTimestamp = documentObj.timestamp.deleted_at;
 
     try {
-      await db.collection("profile").updateOne(
-        { "name": profileData.name },
+      const update = await db.collection("profile").updateOne(
+        { "name": profile.name },
         {
           $set: {
-            level: profileData.level,
-            type: profileData.type,
-            attribute: profileData.attribute,
-            field: profileData.field ? profileData.field : null,
-            group: profileData.group ? profileData.group : null,
-            technique: profileData.technique,
-            artwork: profileData.artwork,
-            profile: profileData.profile,
+            level: profile.level,
+            type: profile.type,
+            attribute: profile.attribute,
+            field: profile.field ? profile.field : null,
+            group: profile.group ? profile.group : null,
+            technique: profile.technique,
+            artwork: profile.artwork,
+            profile: profile.profile,
+            timestamp: {
+              created_at: getCreatedTimestamp,
+              updated_at: now,
+              deleted_at: getDeletedTimestamp,
+            },
           },
         },
       );
+
+      return update;
     } catch (error) {
       log.error(error);
     }
-
-    return "digimon profile successfully updated";
   }
 
   // async delete(name: string): Promise<any> {

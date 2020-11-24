@@ -73,6 +73,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   // deno-lint-ignore no-explicit-any
   async createProfile(ctx: any): Promise<void> {
     const requestBody: Profile = await ctx.request.body().value;
+    console.log(requestBody);
 
     if (!requestBody) {
       ctx.response.status = 404;
@@ -82,8 +83,8 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
       };
     } else if (
       !requestBody.name || !requestBody.level || !requestBody.type ||
-      !requestBody.attribute || !requestBody.field || !requestBody.group ||
-      !requestBody.technique || !requestBody.artwork || !requestBody.profile
+      !requestBody.attribute || !requestBody.technique ||
+      !requestBody.artwork || !requestBody.profile
     ) {
       ctx.response.status = 404;
       ctx.response.body = {
@@ -102,12 +103,31 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
   // deno-lint-ignore no-explicit-any
   async updateProfile(ctx: any): Promise<any> {
     const requestBody: Profile = await ctx.request.body().value;
+    console.log(requestBody);
 
-    ctx.response.status = 200;
-    ctx.response.body = {
-      success: true,
-      data: await digimonService.updateProfile(requestBody),
-    };
+    if (!requestBody) {
+      ctx.response.status = 404;
+      ctx.response.body = {
+        success: false,
+        data: "no data provided",
+      };
+    } else if (
+      !requestBody.name || !requestBody.level || !requestBody.type ||
+      !requestBody.attribute || !requestBody.technique ||
+      !requestBody.artwork || !requestBody.profile
+    ) {
+      ctx.response.status = 404;
+      ctx.response.body = {
+        success: false,
+        data: "missing required field(s)",
+      };
+    } else {
+      ctx.response.status = 200;
+      ctx.response.body = {
+        success: true,
+        data: await digimonService.updateProfile(requestBody),
+      };
+    }
   }
 
   // async deleteProfile(ctx: any): Promise<any> {}
