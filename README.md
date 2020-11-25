@@ -8,15 +8,15 @@
 
 | Methods  | Description                     | Routes        |
 | -------- | ------------------------------- | ------------- |
-| `GET`    | return all digimon              | digimon       |
-| `GET`    | return specific digimon by name | digimon/:name |
-| `POST`   | create specific digimon by name | digimon       |
-| `PUT`    | update specific digimon by name | digimon/:name |
-| `DELETE` | delete specific digimon by name | digimon/:name |
+| `GET`    | return all digimon profiles     | digimon       |
+| `GET`    | return specific profile by name | digimon/:name |
+| `POST`   | create a single profile         | digimon       |
+| `PUT`    | update a specific profile       | digimon/:name |
+| `DELETE` | delete a specific profile       | digimon/:name |
 
 ### References
 
-#### Response Schema glossary
+#### Glossary
 
 [Level](https://wikimon.net/Evolution_Stage) - level of development
 
