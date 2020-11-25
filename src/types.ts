@@ -22,7 +22,24 @@ export interface ProfileSchema extends Profile {
 
 export interface Response {
   success: boolean;
-  data: Profile[];
+}
+
+export interface GetProfileResponse extends Response {
+  data: Profile;
+}
+
+export interface CreateDocumentResponse extends Response {
+  data: {
+    $oid: string;
+  };
+}
+
+export interface ModifiedDocumentResponse extends Response {
+  data: {
+    matchedCount: number;
+    modifiedCount: number;
+    upsertedId?: number | null;
+  };
 }
 
 type Level =
