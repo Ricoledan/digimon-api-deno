@@ -1,28 +1,46 @@
 import client from "../../src/helpers/dbConfig.ts";
-import type { Profile, ProfileSchema } from "../types.ts";
+import type {
+  CreateDocumentResponse,
+  GetProfileResponse,
+  ModifiedDocumentResponse,
+  Profile,
+  ProfileSchema,
+} from "../types.ts";
 import { log, time } from "../deps.ts";
 
 const now = time().tz("America/New_york").t.toISOString();
 
 class DigimonRepository {
-  async selectAllProfiles(): Promise<ProfileSchema[]> {
+  async selectAllProfiles(): Promise<GetProfileResponse[] | undefined> {
     const db = client.database("digimon");
-    const allProfiles = await db.collection("profile").find(
-      { "timestamp.deleted_at": { $eq: null } },
-    );
 
-    return allProfiles;
+    try {
+      const allProfiles = await db.collection("profile").find(
+        { "timestamp.deleted_at": { $eq: null } },
+      );
+
+      return allProfiles;
+    } catch (error) {
+      log.error(error);
+    }
   }
 
-  async selectProfileByName(name: string): Promise<ProfileSchema> {
+  async selectProfileByName(
+    name: string,
+  ): Promise<GetProfileResponse | undefined> {
     const db = client.database("digimon");
-    const oneProfile = await db.collection("profile").findOne({ "name": name });
+    try {
+      const oneProfile = await db.collection("profile").findOne(
+        { "name": name },
+      );
 
-    return oneProfile;
+      return oneProfile;
+    } catch (error) {
+      log.error(error);
+    }
   }
 
-  // deno-lint-ignore no-explicit-any
-  async create(profile: Profile): Promise<any> {
+  async create(profile: Profile): Promise<CreateDocumentResponse | undefined> {
     const db = client.database("digimon");
     const createQuery: ProfileSchema = {
       __v: 0,
@@ -51,8 +69,9 @@ class DigimonRepository {
     }
   }
 
-  // deno-lint-ignore no-explicit-any
-  async update(profile: Profile): Promise<any> {
+  async update(
+    profile: Profile,
+  ): Promise<ModifiedDocumentResponse | undefined> {
     const db = client.database("digimon");
     const documentObj = await db.collection("profile").findOne(
       { "name": profile.name },
@@ -88,8 +107,7 @@ class DigimonRepository {
     }
   }
 
-  // deno-lint-ignore no-explicit-any
-  async delete(name: string): Promise<any> {
+  async delete(name: string): Promise<ModifiedDocumentResponse | undefined> {
     const db = client.database("digimon");
     const documentObj = await db.collection("profile").findOne(
       { "name": name },

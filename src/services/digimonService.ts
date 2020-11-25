@@ -1,32 +1,45 @@
 import digimonRepository from "../repositories/digimonRepository.ts";
-import type { Profile } from "../types.ts";
+import type {
+  CreateDocumentResponse,
+  GetProfileResponse,
+  ModifiedDocumentResponse,
+  Profile,
+} from "../types.ts";
 
 class digimonService {
-  async getAllProfiles(): Promise<Profile[] | string> {
+  async getAllProfiles(): Promise<GetProfileResponse[] | undefined> {
     const data = await digimonRepository.selectAllProfiles();
 
     return data;
   }
 
-  async getProfileByName(name: string): Promise<Profile> {
+  async getProfileByName(
+    name: string,
+  ): Promise<GetProfileResponse | undefined> {
     const data = await digimonRepository.selectProfileByName(name);
 
     return data;
   }
 
-  async createProfile(profileData: Profile): Promise<string> {
+  async createProfile(
+    profileData: Profile,
+  ): Promise<CreateDocumentResponse | undefined> {
     const data = await digimonRepository.create(profileData);
 
     return data;
   }
 
-  async updateProfile(profileData: Profile): Promise<string> {
+  async updateProfile(
+    profileData: Profile,
+  ): Promise<ModifiedDocumentResponse | undefined> {
     const updateProfile = await digimonRepository.update(profileData);
 
     return updateProfile;
   }
 
-  async deleteProfile(name: string): Promise<any> {
+  async deleteProfile(
+    name: string,
+  ): Promise<ModifiedDocumentResponse | undefined> {
     const deleteProfile = await digimonRepository.delete(name);
 
     return deleteProfile;

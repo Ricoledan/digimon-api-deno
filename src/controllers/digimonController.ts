@@ -1,9 +1,9 @@
+import { Context } from "https://deno.land/x/oak@v6.3.1/context.ts";
 import digimonService from "../services/digimonService.ts";
 import type { Profile } from "../types.ts";
 
 class DigimonController {
-  // deno-lint-ignore no-explicit-any
-  root(ctx: any) {
+  root(ctx: Context) {
     ctx.response.status = 200;
     ctx.response.body = `
 ****:***:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.::::::::::::::.:.::.::::::::::::::.:::::::::::::::::::::::::
@@ -52,8 +52,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     `;
   }
 
-  // deno-lint-ignore no-explicit-any
-  async getAllProfiles(ctx: any): Promise<void> {
+  async getAllProfiles(ctx: Context): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -61,8 +60,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  // deno-lint-ignore no-explicit-any
-  async getProfileByName(ctx: any): Promise<void> {
+  async getProfileByName(ctx: Context): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -70,10 +68,8 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  // deno-lint-ignore no-explicit-any
-  async createProfile(ctx: any): Promise<void> {
+  async createProfile(ctx: Context): Promise<void> {
     const requestBody: Profile = await ctx.request.body().value;
-    console.log(requestBody);
 
     if (!requestBody) {
       ctx.response.status = 404;
@@ -100,8 +96,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  // deno-lint-ignore no-explicit-any
-  async updateProfile(ctx: any): Promise<any> {
+  async updateProfile(ctx: Context): Promise<void> {
     const requestBody: Profile = await ctx.request.body().value;
 
     if (!requestBody) {
@@ -129,8 +124,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  // deno-lint-ignore no-explicit-any
-  async deleteProfile(ctx: any): Promise<any> {
+  async deleteProfile(ctx: Context): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
