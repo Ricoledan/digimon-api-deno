@@ -72,11 +72,11 @@ deno run -A drakefile.ts lock
 #### Heroku Logs
 
 ```CLI
-deno run -A drakefile.ts h-logs
+deno run -A drakefile.ts hlogs
 ```
 
 #### Heroku Procfile
 
 ```CLI
-deno run -A drakefile.ts h-local
+deno run -A drakefile.ts hlocal
 ```
