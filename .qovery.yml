@@ -1,0 +1,14 @@
+application:
+  name: digital-monster-mongodb
+  project: digital-monster-api
+  organization: ricoledan
+databases:
+- type: mongodb
+  version: "3.6"
+  name: digimon
+routers:
+- name: main
+  routes:
+  - application_name: digital-monster-mongodb
+    paths:
+    - /
