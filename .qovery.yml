@@ -4,8 +4,8 @@ application:
   publicly_accessible: true
 databases:
   - type: mongodb
-    version: 3.6
-    name: my-mongo
+    version: 4.2
+    name: digimon
 routers:
   - name: main
     routes:
