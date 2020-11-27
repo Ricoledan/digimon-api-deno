@@ -9,10 +9,10 @@ class Database {
     this.connect();
   }
 
-  connect() {
+  async connect() {
     this.client = new MongoClient();
-    this.client.connectWithUri(
-      `mongodb+srv://${env.DATABASE_USER}:${env.DATABASE_PASSWORD}@yggdrasil.ug5tw.mongodb.net/?retryWrites=true&w=majority`,
+    await this.client.connectWithUri(
+      `mongodb+srv://${env.DATABASE_USER}:${env.DATABASE_PASSWORD}@yggdrasil.ug5tw.mongodb.net/digimon?retryWrites=true&w=majority`,
     );
   }
 }
