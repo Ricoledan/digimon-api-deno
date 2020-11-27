@@ -1,15 +1,14 @@
----
 application:
-  name: "digital-monster-api"
-  project: "digital-monster-api"
-  organization: "QoveryCommunity"
+  name: digital-monster-api
+  project: digital-monster-api
+  publicly_accessible: true
 databases:
-- type: "MONGODB"
-  name: "digimon"
-  version: "3.6"
+- type: mongodb
+  version: 3.6
+  name: my-mongo
 routers:
-- name: "main-digital-monster-api"
+- name: main
   routes:
-  - application_name: "digital-monster-api"
+  - application_name: digital-monster-api
     paths:
-    - "/"
+    - /
