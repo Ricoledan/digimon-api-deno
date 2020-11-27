@@ -3,6 +3,7 @@ import router from "./routes.ts";
 
 const env = config();
 const { args } = Deno;
+const host = env.HOST || "0.0.0.0";
 const port = flags.parse(args).port ? Number(flags.parse(args).port) : 3030;
 
 const app = new Application();
@@ -60,6 +61,6 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 if (import.meta.main) {
-  log.info(`デジタルモンスター ${port} 🦕`);
-  await app.listen({ port: port });
+  log.info(`デジタルモンスター ${host}:${port} 🦕`);
+  await app.listen({ hostname: host, port: port });
 }
