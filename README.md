@@ -69,6 +69,18 @@ deno run -A drakefile.ts test
 deno run -A drakefile.ts lock
 ```
 
+#### Build Docker Image
+
+```CLI
+deno run -A drakefile.ts dbuild
+```
+
+#### Run Docker Container
+
+```CLI
+deno run -A drakefile.ts drun
+```
+
 #### Heroku Logs
 
 ```CLI
