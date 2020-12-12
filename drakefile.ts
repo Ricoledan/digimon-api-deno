@@ -32,6 +32,11 @@ task("drun", [], async function () {
   await sh("docker run -it -p 3030:3030 ricoledan/digimon-api");
 });
 
+desc("Push Docker Repository to Registry");
+task("dpush", [], async function () {
+  await sh("docker push ricoledan/digimon-api:latest");
+});
+
 desc("Run Heroku Logs");
 task("hlogs", [], async function () {
   await sh("heroku logs --tail --app digital-monster-api");
