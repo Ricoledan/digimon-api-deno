@@ -37,14 +37,4 @@ task("dpush", [], async function () {
   await sh("docker push ricoledan/digimon-api:latest");
 });
 
-desc("Run Heroku Logs");
-task("hlogs", [], async function () {
-  await sh("heroku logs --tail --app digital-monster-api");
-});
-
-desc("Test Heroku Procfile");
-task("hlocal", [], async function () {
-  await sh("heroku local web");
-});
-
 run();
