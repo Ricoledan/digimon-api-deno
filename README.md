@@ -34,15 +34,6 @@ Artwork - profile image
 
 Profile - brief description
 
-## Resources
-
-### **Thank You! ❤️**
-
-This work could not be done without the help of the digimon community and the folks at [With the Will](https://withthewill.net/), [Wikimon](wikimon), [Digimon Discord Community](https://discord.gg/0VODO3ww0zghqOCO), [File Island: The Complete Digimon Electronics Resource
-](http://lcd.withthewill.net/), the people at Bandai, the amazing people who will use this to power their applications and my beautiful girlfriend who had the patience to allow me to work on my labor of love through the long nights.
-
-[Wikimon](https://wikimon.net/Main_Page) - The best resource for Digimon info since December 2005.
-
 ## Commands
 
 #### Run Dev Environment
@@ -86,3 +77,12 @@ deno run -A drakefile.ts drun
 ```CLI
 deno run -A drakefile.ts dpush
 ```
+
+## Resources
+
+### **Thank You! ❤️**
+
+This work could not be done without the help of the digimon community and the folks at [With the Will](https://withthewill.net/), [Wikimon](wikimon), [Digimon Discord Community](https://discord.gg/0VODO3ww0zghqOCO), [File Island: The Complete Digimon Electronics Resource
+](http://lcd.withthewill.net/), the people at Bandai, the amazing people who will use this to power their applications and my beautiful girlfriend who had the patience to allow me to work on my labor of love through the long nights.
+
+[Wikimon](https://wikimon.net/Main_Page) - The best resource for Digimon info since December 2005.
