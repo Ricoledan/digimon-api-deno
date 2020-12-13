@@ -14,7 +14,7 @@ task("fmt", [], async function () {
 
 desc("Test Deno Project");
 task("test", [], async function () {
-  await sh("deno test");
+  await sh("deno test --unstable --allow-env --allow-read --allow-plugin");
 });
 
 desc("Lock Deno Dependencies");
