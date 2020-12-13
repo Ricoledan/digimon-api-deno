@@ -3,7 +3,7 @@ import digimonService from "../services/digimonService.ts";
 import type { Profile } from "../types.ts";
 
 class DigimonController {
-  root(ctx: Context) {
+  root(ctx: any) {
     ctx.response.status = 200;
     ctx.response.body = `
 ****:***:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.::::::::::::::.:.::.::::::::::::::.:::::::::::::::::::::::::
@@ -52,7 +52,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     `;
   }
 
-  async getAllProfiles(ctx: Context): Promise<void> {
+  async getAllProfiles(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -60,7 +60,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async getProfileByName(ctx: Context): Promise<void> {
+  async getProfileByName(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
@@ -68,7 +68,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     };
   }
 
-  async createProfile(ctx: Context): Promise<void> {
+  async createProfile(ctx: any): Promise<void> {
     const requestBody: Profile = await ctx.request.body().value;
 
     if (!requestBody) {
@@ -96,7 +96,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  async updateProfile(ctx: Context): Promise<void> {
+  async updateProfile(ctx: any): Promise<void> {
     const requestBody: Profile = await ctx.request.body().value;
 
     if (!requestBody) {
@@ -124,7 +124,7 @@ I::::::I:I**VFFI*NIFF*FVNVV:FNFFVIFFFFFVN*......*VFFNFF:::*:::::::::::::::::::::
     }
   }
 
-  async deleteProfile(ctx: Context): Promise<void> {
+  async deleteProfile(ctx: any): Promise<void> {
     ctx.response.status = 200;
     ctx.response.body = {
       success: true,
