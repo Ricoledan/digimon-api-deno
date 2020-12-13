@@ -81,14 +81,8 @@ deno run -A drakefile.ts dbuild
 deno run -A drakefile.ts drun
 ```
 
-#### Heroku Logs
+#### Push Docker Repository to Registry
 
 ```CLI
-deno run -A drakefile.ts hlogs
-```
-
-#### Heroku Procfile
-
-```CLI
-deno run -A drakefile.ts hlocal
+deno run -A drakefile.ts dpush
 ```
