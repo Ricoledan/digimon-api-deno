@@ -24,6 +24,9 @@ jobs:
       - name: Lint Deno Module
         run: deno fmt --check
 
+      - name: Cache Dependencies
+        run: deno run -A --unstable drakefile.ts cache
+
       - name: Build Deno Module
         run: deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --unstable --cached-only src/server.ts
 
