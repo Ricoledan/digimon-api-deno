@@ -27,8 +27,5 @@ jobs:
       - name: Build Deno Module
         run: deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --unstable --cached-only src/server.ts
 
-      - name: Cache Dependencies
-        run: deno run -A --unstable drakefile.ts cache
-
       - name: Test Deno Module
         run: deno run -A --unstable drakefile.ts test
