@@ -1,0 +1,34 @@
+name: test module
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deno-version: [1.6.0]
+
+    steps:
+      - name: Setup repo
+      - uses: actions/checkout@v2
+
+      - name: Use Deno Version ${{ matrix.deno-version }}
+        uses: denolib/setup-deno@v2
+        with:
+          deno: ${{ matrix.deno-version }}
+
+      - name: Lint Deno Module
+        run: deno fmt --check
+
+      - name: Build Deno Module
+        run: deno run -A --unstable drakefile.ts dev
+
+      - name: Cache Dependencies
+        run: deno run -A --unstable drakefile.ts cache
+
+      - name: Test Deno Module
+        run: deno run -A --unstable drakefile.ts test
