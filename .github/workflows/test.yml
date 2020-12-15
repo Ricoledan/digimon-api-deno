@@ -27,11 +27,12 @@ jobs:
       - name: Cache Dependencies
         run: deno run -A --unstable drakefile.ts lock
 
+      - name: prepare env vars
+        run: |
+          echo "DATABASE_USER=${{ secrets.DATABASE_USER}}" > .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD}}" > .env
+
       - name: Build Deno Module
-        env:
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USER: ${{ secrets.DATABASE_USER }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --unstable --cached-only src/server.ts
 
       - name: Test Deno Module
