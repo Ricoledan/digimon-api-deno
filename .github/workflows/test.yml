@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        deno-version: ['v1.x', 'nightly']
+        deno-version: [1.6.1]
         os: [ubuntu-latest]
 
     steps:
@@ -27,10 +27,6 @@ jobs:
 
       - name: Cache Dependencies
         run: deno run -A --unstable drakefile.ts lock
-
-      - name: prepare env vars
-        run: |
-          echo "DATABASE_USER=${{ secrets.DATABASE_USER}} DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD}}" > .env
 
       - name: Test Deno Module
         run: deno run -A --unstable drakefile.ts test
