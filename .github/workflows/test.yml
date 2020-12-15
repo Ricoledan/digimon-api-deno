@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        deno-version: [1.6.0]
+        deno-version: ['v1.x', 'nightly']
+        os: [macOS-latest, windows-latest, ubuntu-latest]
 
     steps:
       - name: Setup repo
@@ -30,9 +31,6 @@ jobs:
       - name: prepare env vars
         run: |
           echo "DATABASE_USER=${{ secrets.DATABASE_USER}} DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD}}" > .env
-
-      - name: Build Deno Module
-        run: deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --unstable --cached-only src/server.ts
 
       - name: Test Deno Module
         run: deno run -A --unstable drakefile.ts test
