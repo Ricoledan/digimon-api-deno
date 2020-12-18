@@ -34,13 +34,3 @@ jobs:
 
       - name: Test Deno Module
         run: deno run -A --unstable drakefile.ts test
-
-  docker:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: build docker image
-        run: deno run -A --unstable drakefile.ts dbuild
-
-      - name: push docker repository to registry
-        run: deno run -A --unstable drakefile.ts dpush
