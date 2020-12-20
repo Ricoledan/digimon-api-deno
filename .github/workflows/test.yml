@@ -1,17 +1,18 @@
-name: test module
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
+name: Test Module
+
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         deno-version: [1.6.1]
-        os: [ubuntu-20.04]
+        os: [ubuntu-latest]
 
     steps:
       - name: Setup repo
