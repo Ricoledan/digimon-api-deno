@@ -1,12 +1,6 @@
-# on:
-#   release:
-#     types: [created]
-# Testing logic
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  release:
+    types: [created]
 
 name: Deploy to Amazon ECS
 
